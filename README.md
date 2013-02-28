@@ -15,4 +15,4 @@ shop
  
  W detalach oferty mniej więcej tak jak na allegro.
  
- Musze się dowiedzieć jak wysyłać pliki z konta usera na host i jak tworzyć miniaturki zdjęć. 
+
