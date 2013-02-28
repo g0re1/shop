@@ -4,7 +4,6 @@
    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
       http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
    version="2.0">
-
 		<application>
 			<locale-config>
 				<default-locale>pl</default-locale>
@@ -15,26 +14,41 @@
 			</resource-bundle>		
 		</application>
 		
+		<navigation-rule>	
+			<navigation-case>
+				<from-outcome>index</from-outcome>
+				<to-view-id>/index.xhtml</to-view-id>
+			</navigation-case>	
+		</navigation-rule>
+		
+		<navigation-rule>	
+				<navigation-case>
+					<from-outcome>login</from-outcome>
+					<to-view-id>/sections/login/login.xhtml</to-view-id>
+				</navigation-case>	
+			</navigation-rule>
+			
+		  <navigation-rule>	
+				<navigation-case>
+					<from-outcome>register</from-outcome>
+					<to-view-id>/sections/login/register.xhtml</to-view-id>
+				</navigation-case>	
+			</navigation-rule>
+		
+		
 			<navigation-rule>	
 				<navigation-case>
 					<from-outcome>registered</from-outcome>
-					<to-view-id>/registered.xhtml</to-view-id>
+					<to-view-id>/sections/login/registered.xhtml</to-view-id>
 				</navigation-case>	
 			</navigation-rule>
 		
 			<navigation-rule>	
 				<navigation-case>
 					<from-outcome>welcome</from-outcome>
-					<to-view-id>/welcome.xhtml</to-view-id>
+					<to-view-id>/sections/login/welcome.xhtml</to-view-id>
 				</navigation-case>	
 			</navigation-rule>
-				
-			<navigation-rule>	
-				<navigation-case>
-					<from-outcome>logout</from-outcome>
-					<to-view-id>/logout.xhtml</to-view-id>
-				</navigation-case>	
-			</navigation-rule>
-			
+					
 				
 </faces-config>

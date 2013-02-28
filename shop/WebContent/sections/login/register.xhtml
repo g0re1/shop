@@ -3,13 +3,23 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-   <h:head>
-      <title>Rejestracja loginu</title>
-   </h:head>
-   <h:body>
-      <h:form prependedId="false">
-      	<h2>Rejestracja</h2>
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+     <body> 
+     
+       <ui:composition template="/templates/masterLayout.xhtml">
+         <ui:define name="windowTitle">
+          Shop-Gore
+         </ui:define>
+
+    <ui:define name="content">
+    <div id="tresc">								
+	<div id="wpis">				
+	<br />					
+	<h2>Rejestracja</h2>
+	<p>12 października 2012 11:52:25<span> Autor : <a href="#">gore</a></span></p> 		<hr />
+	
+     <h:form prependedId="false">
          <h3>Proszę wpisać nazwe i haslo uzytkownika.</h3>
          <table>
             <tr>
@@ -30,5 +40,14 @@
          </p>
 
       </h:form>
-   </h:body>
+      
+	<br />		
+	</div>	
+	<br /><br />
+				
+	</div>
+    </ui:define>
+   </ui:composition>
+ 
+   </body>
 </html>

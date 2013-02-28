@@ -1,6 +1,7 @@
 package pl.igore.shop.POJO;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,10 @@ public class Product implements Serializable {
 	private int id;
 	private String name;
 	private Category category;
+	private double price;
+	private String specification;
+	private Date startDate;
+	private Date endDate;
 	
 	public Product(){}
 	
@@ -41,4 +46,37 @@ public class Product implements Serializable {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public String getSpecification() {
+		return specification;
+	}
+
+	public void setSpecification(String specification) {
+		this.specification = specification;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
 }

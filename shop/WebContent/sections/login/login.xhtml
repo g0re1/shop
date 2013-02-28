@@ -1,17 +1,25 @@
- 	<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-   <h:head>
-      <title>Shop-Gore</title>
-      <h:outputStylesheet library="css" name="style.css"/>
-   </h:head>
-   <h:body>
-   
- 	<center>
-      <h:form prependedId="false">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:f="http://java.sun.com/jsf/core">
+<head><title>IGNORED</title></head>
+<body>
+
+      <ui:composition template="/templates/masterLayout.xhtml">
+         <ui:define name="windowTitle">
+          Shop-Gore
+         </ui:define>
+
+    <ui:define name="content">
+    <div id="tresc">								
+	<div id="wpis">				
+	<br />					
+	<h2>Rejestracja</h2>
+	<p>12 października 2012 11:52:25<span> Autor : <a href="#">gore</a></span></p> 		<hr />
+	
+	<h:form prependedId="false">
          <h3>Proszę wpisać nazwe i haslo uzytkownika.</h3>
          <table>
             <tr>
@@ -30,6 +38,15 @@
          </p>
          <h3><h:outputText id="out" value="#{user.verify}"/></h3>
       </h:form>
-      </center>
-   </h:body>
-</html>
+      
+
+	<br />		
+	</div>	
+	<br /><br />
+				
+			</div>
+         </ui:define>
+      </ui:composition>
+      
+ </body>
+ </html>

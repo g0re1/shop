@@ -1,100 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-   <h:head>
-      <title>Shop-Gore</title>
-      <h:outputStylesheet library="css" name="style.css"/>
-   </h:head>
-   <h:body>
-   
-   <div id="wrapper">
-	<div id="naglowek">
-		<h:graphicImage name="logo.jpg" library="images"/>
-    </div>
 
-	<div id="tabs">
-    <ul>
-		<li><h:link outcome="index" value="Strona Główna"  /></li>
-		<li><h:link outcome="index" value="Moje Konto"  /></li>
-		<li><h:link outcome="index" value="Sprzedaj"  /></li>
-		<li><h:link outcome="index" value="Forum"  /></li>
-        <li><h:link outcome="index" value="Pomoc"  /></li>
-		<li><h:link outcome="index" value="Kontakt"  /></li>
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+        <head><title>IGNORED</title></head>
+        
+ <body>
+      <ui:composition template="/templates/masterLayout.xhtml">
+         <ui:define name="windowTitle">
+          Shop-Gore
+         </ui:define>
 
-      		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      		<h:link outcome="login" value="[ -- Zaloguj się -- ]"  />
-      		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	        <h:link outcome="register" value="[ --- Rejestracja --- ]"  />
-    		
-    </ul>
-    </div>
-
-
-
-<div id="sidebar">
-	<h2>Kategorie</h2>
-	<p><a href="#">fitna.pl</a></p>
-	<p><a href="#">fitna.pl</a></p>
-	<p><a href="#">fitna.pl</a></p>
-	<p><a href="#">fitna.pl</a></p>
-	<p><a href="#">fitna.pl</a></p>
-	<p><a href="#">fitna.pl</a></p>
-	<p><a href="#">fitna.pl</a></p>
-	<p><a href="#">fitna.pl</a></p>
-	<p><a href="#">fitna.pl</a></p>
-	<p><a href="#">fitna.pl</a></p>
-	<p><a href="#">fitna.pl</a></p>
-	<p><a href="#">fitna.pl</a></p>
-	</div>
-
-
-
-	<div id="tresc">								
+         <ui:define name="content">
+             <div id="tresc">								
 				<div id="wpis">				
 					<br />					
-					<h2>nowe2</h2>
+					<h2>Wpis</h2>
 					<p>12 października 2012 11:52:25<span> Autor : <a href="#">gore</a></span></p> 		<hr />
-					<p>nowe2</p><hr />
+					<p>   Ziemia jest zamieszkana przez programistów i inne formy życia.</p><hr />
 					<p><a href="/fitna/news/nowe2/">Read more | Comments</a>(28)</p>	
 					<br />		
 				</div>	
-			<br /><br />	
-										
-				<div id="wpis">				
-					<br />					
-					<h2>Nowe</h2>
-					<p>12 października 2012 11:52:04<span> Autor : <a href="#">gore</a></span></p><hr /> 		
-					<p>Nowe</p><hr />
-					<p><a href="/fitna/news/nowe/">Read more | Comments</a>(10)</p>	
-					<br />		
-				</div>	
-			<br /><br />	
+			<br /><br />
 				
-			
-	<p> </p>
-	 </div>			
-<!-- end #content -->		
+			</div>
+         </ui:define>
+      </ui:composition>
 
-
-	
-	<div id="stopka">
-	<p>Copyright <a href="http://shop-gore.rhcloud.com"> shop-gore </a> Design by <b>Gore</b></p> 
-	</div>
-	<p><font size="-2" color="silver">Tagi :  Java from Beginning
-		</font></p>
-</div>
-   
-   
-   
-   
-    </h:body>
+</body>
 </html>
-
-
-
-
-
-
