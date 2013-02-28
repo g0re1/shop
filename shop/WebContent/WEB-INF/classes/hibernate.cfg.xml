@@ -35,10 +35,12 @@
         <property name="current_session_context_class">thread</property>
 
         <!-- Hibernate  mapping class -->
-
+		<mapping class="pl.igore.shop.POJO.User"/>
+		<mapping class="pl.igore.shop.POJO.Category"/>
+		<mapping class="pl.igore.shop.POJO.Product"/>
     	
         <!-- Hibernate Annotations (and package-info.java) -->
-        <mapping package="pl.igore.shop.POJO" /> 
+
 		
     </session-factory>
 

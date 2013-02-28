@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -43,13 +45,12 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 	
-	@ManyToOne(targetEntity=Product.class,optional=false)
-	@Column(nullable=false)
-	public Set<Product> getProdutcs() {
+	@OneToMany(mappedBy="category",cascade=CascadeType.ALL)
+	public Set<Product> getProducts() {
 		return products;
 	}
 
-	public void setProdutcs(Set<Product> produtcs) {
-		this.products = produtcs;
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
 }

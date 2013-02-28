@@ -3,11 +3,17 @@ package pl.igore.shop.POJO;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="product")
 public class Product implements Serializable {
 	private int id;
 	private String name;
@@ -38,7 +44,7 @@ public class Product implements Serializable {
 		this.name = name;
 	}
 
-	@OneToMany(mappedBy="category")
+	@ManyToOne(targetEntity=Category.class)
 	public Category getCategory() {
 		return category;
 	}
