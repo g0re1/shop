@@ -5,7 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
    <h:head>
-      <title>Witaj</title>
+      <title>Shop-Gore</title>
       <h:outputStylesheet library="css" name="style.css"/>
    </h:head>
    <h:body>
@@ -25,9 +25,9 @@
 		<li><h:link outcome="index" value="Kontakt"  /></li>
 
       		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      		<h:link outcome="index" value="[ -- Zaloguj się -- ]"  />
+      		<h:link outcome="login" value="[ -- Zaloguj się -- ]"  />
       		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	        <h:link outcome="index" value="[ --- Rejestracja --- ]"  />
+	        <h:link outcome="register" value="[ --- Rejestracja --- ]"  />
     		
     </ul>
     </div>
@@ -35,15 +35,13 @@
 
 
 <div id="sidebar">
-	<h2>TOP 10 ART's </h2>
+	<h2>Kategorie</h2>
 	<p><a href="#">fitna.pl</a></p>
 	<p><a href="#">fitna.pl</a></p>
 	<p><a href="#">fitna.pl</a></p>
 	<p><a href="#">fitna.pl</a></p>
 	<p><a href="#">fitna.pl</a></p>
 	<p><a href="#">fitna.pl</a></p>
-	<br /><br />
-	<h2>TOP 10 BLOG's</h2>
 	<p><a href="#">fitna.pl</a></p>
 	<p><a href="#">fitna.pl</a></p>
 	<p><a href="#">fitna.pl</a></p>
@@ -92,28 +90,7 @@
    
    
    
-   	<center>
-      <h:form prependedId="false">
-         <h3>Proszę wpisać nazwe i haslo uzytkownika.</h3>
-         <table>
-            <tr>
-               <td>Nazwa:</td>
-               <td><h:inputText id="name" value="#{user.name}"/></td>
-            </tr>
-            <tr>
-               <td>Haslo:</td>
-               <td><h:inputSecret id="password" value="#{user.password}"/></td>
-            </tr>
-         </table>
-         <p><h:commandButton value="Login" action="#{user.verifyUser}">
-         	<f:ajax execute="name password" render="out"/>
-         </h:commandButton>
-         <h:commandButton value="Register" action="register"/>
-         </p>
-         <h3><h:outputText id="out" value="#{user.verify}"/></h3>
-      </h:form>
-      </center>
-   </h:body>
+    </h:body>
 </html>
 
 

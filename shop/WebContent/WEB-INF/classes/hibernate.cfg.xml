@@ -29,18 +29,17 @@
         <property name="show_sql">true</property>
     
         <!-- Drop and then re-create schema on SessionFactory build, for testing. -->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
     
         <!-- Bind the getCurrentSession() method to the thread. -->
         <property name="current_session_context_class">thread</property>
 
         <!-- Hibernate  mapping class -->
-     	<mapping class="pl.igore.shop.POJO.User"/>
-    	
-        <!-- Hibernate Annotations (and package-info.java)
-		
-        -->
 
+    	
+        <!-- Hibernate Annotations (and package-info.java) -->
+        <mapping package="pl.igore.shop.POJO" /> 
+		
     </session-factory>
 
 </hibernate-configuration>
