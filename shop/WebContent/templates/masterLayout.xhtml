@@ -15,8 +15,7 @@
    
    <h:body>   
      <div id="wrapper">
-   <ui:insert name="heading">
-   
+ 
 	  <div id="naglowek">
    		 <h:graphicImage name="logo.jpg" library="images"/>
    </div>
@@ -29,16 +28,25 @@
 		<li><h:link outcome="index" value="Forum"  /></li>
         <li><h:link outcome="index" value="Pomoc"  /></li>
 		<li><h:link outcome="index" value="Kontakt"  /></li>
-
+         	
+         	
+         	<ui:insert name="login">
+         	
       		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       		<h:link outcome="login" value="[ -- Zaloguj się -- ]"  />
       		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	        <h:link outcome="register" value="[ --- Rejestracja --- ]"  />
-    		
+	        
+	        </ui:insert>
+	        
+	        <ui:insert name="logout">
+      					<h:link rendered="verified" outcome="logout" value="[ -- Wyloguj -- ]"  />
+	        </ui:insert>
+    	
     </ul>
     </div>
   
-     </ui:insert>
+
           
     <ui:insert name="sidebarLeft">
             

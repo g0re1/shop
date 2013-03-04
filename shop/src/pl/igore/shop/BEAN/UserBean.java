@@ -11,18 +11,18 @@ import pl.igore.shop.POJO.User;
 
 @ManagedBean(name="user") // lub @Named("user")
 @SessionScoped
+
 public class UserBean implements Serializable {
    private String name;
    private String password;
    private String mail;
    private UserDAO userD;
    private int verify;
+   private boolean verified;
+  
    
-   public UserBean(){
-	   userD = new UserDAO();
-	   verify=0; // -1 wrong password, 0 user dosn't exist, 1 correct pass
-	   name="";
-   }
+   public boolean isVerified() {return verified;}
+   public void setVerified(boolean verified) {this.verified = verified;}
    
    public String getName() { return name; }   
    public void setName(String newValue) { name = newValue; }
@@ -38,25 +38,12 @@ public class UserBean implements Serializable {
 	   
    }
    
-   public String verifyUser(){
-	   User user = null;
-	   if(name.equals(new String()) ) return"";
-	   try {
-		if (!userD.contains(name)){
-			verify=-1;
-			return"";
-		}
-		user = userD.get(name);
-	   } 
-	   catch (AdException e) {
-		e.getMessage();
-	   }
-	   if(user.getPassword().equals(password)) return "welcome";
-	   else{verify=-2;return"";}
+   public String index(){
+	   return "index";
    }
    
    public String getVerify(){
-	   if(name=="")return"";
+	   if(name=="")return null;
 	   if(verify==-2) return"Wrong password";
 	   if(verify==-1) return"User doesn't exist";
 	   else{return"";}
@@ -70,4 +57,6 @@ public class UserBean implements Serializable {
 	}
 	return "registered";
    }
+
+
 }

@@ -4,39 +4,30 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
        xmlns:f="http://java.sun.com/jsf/core">
-<head><title>IGNORED</title></head>
-<body>
+<h:body>
 
-      <ui:composition template="/templates/masterLayout.xhtml">
-         <ui:define name="windowTitle">
-          Shop-Gore
-         </ui:define>
-
-    <ui:define name="content">
     <div id="tresc">								
 	<div id="wpis">				
 	<br />					
 	<h2>Rejestracja</h2>
 	<p>12 października 2012 11:52:25<span> Autor : <a href="#">gore</a></span></p> 		<hr />
 	
-	<h:form prependedId="false">
+	<h:form>
          <h3>Proszę wpisać nazwe i haslo uzytkownika.</h3>
          <table>
             <tr>
                <td>Nazwa:</td>
-               <td><h:inputText id="name" value="#{user.name}"/></td>
+               <td><h:inputText value="#{user.name}"/></td>
             </tr>
             <tr>
                <td>Haslo:</td>
-               <td><h:inputSecret id="password" value="#{user.password}"/></td>
+               <td><h:inputSecret value="#{user.password}"/></td>
             </tr>
          </table>
-         <p><h:commandButton value="Login" action="#{user.verifyUser}">
-         	<f:ajax execute="name password" render="out"/>
-         </h:commandButton>
-         <h:commandButton value="Register" action="register"/>
+         <p>
+         <h:commandButton value="Login" action="#{user.index}"/>
+          <h:button value="Register" outcome="register"/>
          </p>
-         <h3><h:outputText id="out" value="#{user.verify}"/></h3>
       </h:form>
       
 
@@ -45,8 +36,7 @@
 	<br /><br />
 				
 			</div>
-         </ui:define>
-      </ui:composition>
+
       
- </body>
+ </h:body>
  </html>

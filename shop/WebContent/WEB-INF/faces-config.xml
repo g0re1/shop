@@ -18,6 +18,7 @@
 			<navigation-case>
 				<from-outcome>index</from-outcome>
 				<to-view-id>/index.xhtml</to-view-id>
+				<redirect/>
 			</navigation-case>	
 		</navigation-rule>
 		
@@ -32,6 +33,7 @@
 				<navigation-case>
 					<from-outcome>register</from-outcome>
 					<to-view-id>/sections/login/register.xhtml</to-view-id>
+					<redirect/>
 				</navigation-case>	
 			</navigation-rule>
 		
@@ -42,13 +44,5 @@
 					<to-view-id>/sections/login/registered.xhtml</to-view-id>
 				</navigation-case>	
 			</navigation-rule>
-		
-			<navigation-rule>	
-				<navigation-case>
-					<from-outcome>welcome</from-outcome>
-					<to-view-id>/sections/login/welcome.xhtml</to-view-id>
-				</navigation-case>	
-			</navigation-rule>
-					
-				
+			
 </faces-config>
