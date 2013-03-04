@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean; 
    // lub import javax.inject.Named;
 import javax.faces.bean.SessionScoped; 
+import javax.faces.context.FacesContext;
 
 import pl.igore.shop.DAO.AdException;
 import pl.igore.shop.DAO.UserDAO;
@@ -16,9 +17,18 @@ public class UserBean implements Serializable {
    private String name;
    private String password;
    private String mail;
-   private UserDAO userD;
    private int verify;
    private boolean verified;
+   private boolean notVerified;
+   private UserDAO userD;
+   
+   public UserBean(){
+	   name="";
+	   userD = new UserDAO();
+	   verify=0;
+	   verified=false;
+	   notVerified=true;
+   }
   
    
    public boolean isVerified() {return verified;}
@@ -38,12 +48,33 @@ public class UserBean implements Serializable {
 	   
    }
    
-   public String index(){
-	   return "index";
+   public String verifyUser(){
+	   try {
+		if (!userD.contains(name) ){
+			verify=-1;
+			return"";
+		   }
+	} catch (AdException e) {
+		e.getMessage();
+	}
+	   User user = null;
+	   try {
+		user = userD.get(name);
+	} catch (AdException e) {
+		e.getMessage();
+	}
+	   if(password.equals(user.getPassword())){
+		   verified=true;
+		   notVerified=false;
+		   return "index";
+	   }
+	   else{
+		   verify=-2;
+		   return "";
+	   } 
    }
-   
    public String getVerify(){
-	   if(name=="")return null;
+	   if(name=="")return "";
 	   if(verify==-2) return"Wrong password";
 	   if(verify==-1) return"User doesn't exist";
 	   else{return"";}
@@ -58,5 +89,19 @@ public class UserBean implements Serializable {
 	return "registered";
    }
 
+
+public boolean isNotVerified() {
+	return notVerified;
+}
+
+
+public void setNotVerified(boolean notVerified) {
+	this.notVerified = notVerified;
+}
+
+public String logout() {
+    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+    return "index.xhtml?faces-redirect=true";
+}
 
 }

@@ -28,20 +28,18 @@
 		<li><h:link outcome="index" value="Forum"  /></li>
         <li><h:link outcome="index" value="Pomoc"  /></li>
 		<li><h:link outcome="index" value="Kontakt"  /></li>
-         	
-         	
+         	 	
          	<ui:insert name="login">
-         	
+         	<h:inputHidden value="#{user}"/>
       		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      		<h:link outcome="login" value="[ -- Zaloguj się -- ]"  />
+      		<h:link rendered="#{notVerified}" outcome="login" value="[ -- Zaloguj się -- ]"  />
       		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	        <h:link outcome="register" value="[ --- Rejestracja --- ]"  />
+	        <h:link rendered="#{notVerified}" outcome="register" value="[ --- Rejestracja --- ]"  />
 	        
 	        </ui:insert>
-	        
 	        <ui:insert name="logout">
-      					<h:link rendered="verified" outcome="logout" value="[ -- Wyloguj -- ]"  />
-	        </ui:insert>
+
+	    	</ui:insert>
     	
     </ul>
     </div>
@@ -51,6 +49,7 @@
     <ui:insert name="sidebarLeft">
             
 		<div id="sidebar">
+		<h:outputText value="#{verified}"/>
 		<h2>Kategorie</h2>
 		<p><a href="#">fitna.pl</a></p>
 		<p><a href="#">fitna.pl</a></p>
