@@ -89,19 +89,17 @@ public class UserBean implements Serializable {
 	return "registered";
    }
 
-
-public boolean isNotVerified() {
-	return notVerified;
-}
-
-
-public void setNotVerified(boolean notVerified) {
-	this.notVerified = notVerified;
-}
-
-public String logout() {
-    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-    return "index.xhtml?faces-redirect=true";
-}
+	public boolean isNotVerified() {
+		return notVerified;
+	}
+	
+	public void setNotVerified(boolean notVerified) {
+		this.notVerified = notVerified;
+	}
+	
+	public String logout() {
+	    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+	    return "index";
+	}
 
 }
