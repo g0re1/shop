@@ -14,23 +14,25 @@ import pl.igore.shop.POJO.User;
 @SessionScoped
 
 public class UserBean implements Serializable {
+  
    private String name;
    private String password;
    private String mail;
    private int verify;
    private boolean verified;
    private boolean notVerified;
-   private UserDAO userD;
    
    public UserBean(){
 	   name="";
-	   userD = new UserDAO();
 	   verify=0;
 	   verified=false;
 	   notVerified=true;
    }
-  
    
+   public void setVerify(int v){
+	   this.verify=v;
+   }
+  
    public boolean isVerified() {return verified;}
    public void setVerified(boolean verified) {this.verified = verified;}
    
@@ -49,6 +51,7 @@ public class UserBean implements Serializable {
    }
    
    public String verifyUser(){
+	   UserDAO userD = new UserDAO();
 	   try {
 		if (!userD.contains(name) ){
 			verify=-1;
@@ -80,7 +83,8 @@ public class UserBean implements Serializable {
 	   else{return"";}
    }
    
-   public String create(){	   
+   public String create(){
+	   UserDAO userD = new UserDAO();   
 	   try {
 		userD.create(name, password,mail);
 	} catch (AdException e) {
