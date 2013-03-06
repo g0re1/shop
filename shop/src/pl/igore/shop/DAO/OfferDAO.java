@@ -4,27 +4,27 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 
 import pl.igore.shop.POJO.Category;
-import pl.igore.shop.POJO.Product;
+import pl.igore.shop.POJO.Offer;
 
-public class ProductDAO  extends DAO{
+public class OfferDAO  extends DAO{
 	
-	public ProductDAO(){}
+	public OfferDAO(){}
 	
-	public Product create(String name) throws AdException{
+	public Offer create(String name) throws AdException{
 		
-			Product prod =  null;
+			Offer offer =  null;
 			try{
 				begin();
 				Query query = getSession().createQuery("from Product where product_name=:name");
 				query.setParameter("name", name);
-				prod = (Product) query.uniqueResult();
+				offer = (Offer) query.uniqueResult();
 				commit();
 			}
 			catch(HibernateException e){
 				rollback();
 				throw new AdException("Could not create Product named = "+name,e);
 			}	
-			return prod;
+			return offer;
 		}
 	
 }

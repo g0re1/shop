@@ -13,8 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="product")
-public class Product implements Serializable {
+@Table(name="offer")
+public class Offer implements Serializable {
 	private int id;
 	private String name;
 	private Category category;
@@ -23,7 +23,7 @@ public class Product implements Serializable {
 	private Date startDate;
 	private Date endDate;
 	
-	public Product(){}
+	public Offer(){}
 	
 	@Id
 	@GeneratedValue

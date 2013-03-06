@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import pl.igore.shop.App;
 import pl.igore.shop.DAO.AdException;
 import pl.igore.shop.DAO.AdminDAO;
 import pl.igore.shop.POJO.Admin;
@@ -22,10 +23,12 @@ public class AdminBean extends UserBean{
 	}
 	
 	public String initUsers(){
+		App.loadUsers();
 		return"";
 	}
 	
 	public String initCategory(){
+		App.loadCat();
 		return "";
 	}
 	

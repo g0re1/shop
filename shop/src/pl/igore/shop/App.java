@@ -10,20 +10,35 @@ import java.util.StringTokenizer;
 
 import pl.igore.shop.DAO.AdException;
 import pl.igore.shop.DAO.CategoryDAO;
+import pl.igore.shop.DAO.UserDAO;
 
 public class App {
 	
-	public static void main(String[] args) {
-		load();
+	public static void loadUsers(){
+		BufferedReader we = null;
+		String linia;
+		UserDAO userD = new UserDAO();
+
+		try{
+			 we = new BufferedReader( new FileReader("/root/git/shop/shop/WebContent/TestData/users.txt"));
+			 while( (linia = we.readLine())  != null) {		
+				StringTokenizer t = new StringTokenizer(linia,"|");
+				userD.create(t.nextToken(),t.nextToken(),t.nextToken());
+			}
+		}
+		catch(FileNotFoundException e){e.printStackTrace();} 
+		catch (IOException e) { e.printStackTrace(); }
+		catch(AdException e){e.printStackTrace();}
+			
 	}
 	
-	public static void load(){
+	public static void loadCat(){
 		BufferedReader we = null;
 		String linia;
 		CategoryDAO catD = new CategoryDAO();
 
 		try{
-			 we = new BufferedReader( new FileReader("/home/gore/Projects/shop/WebContent/TestData/cat.txt"));
+			 we = new BufferedReader( new FileReader("/root/git/shop/shop/WebContent/TestData/cat.txt"));
 			 while( (linia = we.readLine())  != null) {		
 				StringTokenizer t = new StringTokenizer(linia,"|");
 				catD.create(t.nextToken());

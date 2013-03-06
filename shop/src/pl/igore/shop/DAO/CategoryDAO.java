@@ -10,12 +10,10 @@ public class CategoryDAO  extends DAO{
 	public CategoryDAO(){}
 	
 	public Category create(String name) throws AdException{
-		Category cat =  null;
+		Category cat =  new Category(name);
 		try{
 			begin();
-			Query query = getSession().createQuery("from Category where category_name=:name");
-			query.setParameter("name", name);
-			cat = (Category) query.uniqueResult();
+			getSession().save(cat);
 			commit();
 		}
 		catch(HibernateException e){

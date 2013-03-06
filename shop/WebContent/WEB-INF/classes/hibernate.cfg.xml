@@ -38,7 +38,7 @@
 		<mapping class="pl.igore.shop.POJO.User"/>
 		<mapping class="pl.igore.shop.POJO.Admin"/>
 		<mapping class="pl.igore.shop.POJO.Category"/>
-		<mapping class="pl.igore.shop.POJO.Product"/>
+		<mapping class="pl.igore.shop.POJO.Offer"/>
     	
         <!-- Hibernate Annotations (and package-info.java) -->
 

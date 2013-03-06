@@ -18,13 +18,13 @@ import javax.persistence.Table;
 public class Category implements Serializable {
 	private int id;
 	private String name;
-	private Set<Product>products;
+	private Set<Offer>offers;
 	
 	public Category(){}
 	
 	public Category(String name){
 		this.name=name;
-		this.products= new HashSet<Product>();
+		this.offers= new HashSet<Offer>();
 	}
 
 	@Id
@@ -46,11 +46,11 @@ public class Category implements Serializable {
 	}
 	
 	@OneToMany(mappedBy="category",cascade=CascadeType.ALL)
-	public Set<Product> getProducts() {
-		return products;
+	public Set<Offer> getOffers() {
+		return offers;
 	}
 
-	public void setProducts(Set<Product> products) {
-		this.products = products;
+	public void setOffers(Set<Offer> offers) {
+		this.offers=offers;
 	}
 }
