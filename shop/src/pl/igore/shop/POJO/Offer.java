@@ -25,6 +25,10 @@ public class Offer implements Serializable {
 	
 	public Offer(){}
 	
+	public Offer(String name){
+		this.name=name;
+	}
+	
 	@Id
 	@GeneratedValue
 	public int getId() {

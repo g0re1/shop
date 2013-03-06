@@ -12,12 +12,10 @@ public class OfferDAO  extends DAO{
 	
 	public Offer create(String name) throws AdException{
 		
-			Offer offer =  null;
+		Offer offer =  new Offer(name);
 			try{
 				begin();
-				Query query = getSession().createQuery("from Product where product_name=:name");
-				query.setParameter("name", name);
-				offer = (Offer) query.uniqueResult();
+				getSession().save(offer);
 				commit();
 			}
 			catch(HibernateException e){

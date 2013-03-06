@@ -14,6 +14,10 @@ import pl.igore.shop.DAO.UserDAO;
 
 public class App {
 	
+	public static void add100RandomOffers(){
+		
+	}
+	
 	public static void loadUsers(){
 		BufferedReader we = null;
 		String linia;
