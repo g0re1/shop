@@ -12,8 +12,21 @@ import pl.igore.shop.POJO.Admin;
 @SessionScoped
 
 public class AdminBean extends UserBean{
+	private String position;
 	
 	public AdminBean(){
+		super();
+	}
+	public String add100RandomOffers(){
+		return"";
+	}
+	
+	public String initUsers(){
+		return"";
+	}
+	
+	public String initCategory(){
+		return "";
 	}
 	
 	@PostConstruct
@@ -21,7 +34,7 @@ public class AdminBean extends UserBean{
 		AdminDAO adminD = new AdminDAO();
 		try {
 			if( !adminD.contains("admin")){
-				adminD.create("admin","a","admin@lib-gore.rhcloud.com");
+				adminD.create("admin","a","admin@lib-gore.rhcloud.com","headAdmin");
 			}
 		} catch (AdException e) {
 			e.printStackTrace();
@@ -42,12 +55,12 @@ public class AdminBean extends UserBean{
 		   try {
 			admin = adminD.get(getName());
 		} catch (AdException e) {
-			e.getMessage();
+			e.printStackTrace();
 		}
 		   if(super.getPassword().equals(admin.getPassword())){
 			   super.setVerified(true);
 			   super.setNotVerified(false);
-			   return "index";
+			   return "adminAccount";
 		   }
 		   else{
 			   super.setVerify(-2);
@@ -59,12 +72,18 @@ public class AdminBean extends UserBean{
 		AdminDAO adminD = new AdminDAO();
 		try {
 			if( !adminD.contains(super.getName())){
-				adminD.create(super.getName(),super.getPassword(),super.getMail());
+				adminD.create(super.getName(),super.getPassword(),super.getMail(),this.getPosition());
 			}
 		} catch (AdException e) {
 			e.printStackTrace();
 		}
 		return "";
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
 	}
 	
 }

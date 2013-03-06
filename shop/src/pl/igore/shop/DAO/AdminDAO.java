@@ -13,7 +13,7 @@ public class AdminDAO extends DAO{
 		Admin admin =  null;
 		try{
 			begin();
-			Query query = getSession().createQuery("from User where name=:name");
+			Query query = getSession().createQuery("from Admin where name=:name");
 			query.setParameter("name", name);
 			admin = (Admin) query.uniqueResult();
 			commit();
@@ -25,8 +25,8 @@ public class AdminDAO extends DAO{
 		return admin;
 	}
 	
-	public Admin create(String name,String password,String mail) throws AdException{
-		Admin admin =  new Admin(name,password,mail);
+	public Admin create(String name,String password,String mail,String position) throws AdException{
+		Admin admin =  new Admin(name,password,mail,position);
 		try{
 			begin();
 			getSession().save(admin);

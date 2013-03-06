@@ -31,12 +31,11 @@ public class Admin extends Person{
 	private String position;
 
 	public Admin(){
-		this.position="headAdmin";
 	}
 	
-	public Admin(String name,String pass,String mail){
+	public Admin(String name,String pass,String mail,String position){
 		super(name, pass, mail);
-		this.position="headAdmin";
+		this.position=position;
 	}
 	
 	public Admin(String position){

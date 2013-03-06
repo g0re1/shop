@@ -18,24 +18,32 @@
 	<h2>Panel Admina</h2>
 	<p>12 października 2012 11:52:25<span> Autor : <a href="#">gore</a></span></p> 		<hr />
 	
-     <h:form prependId="false">
-         <h3>Proszę wpisać nazwę i hasło użytkownika.</h3>
-         <table>
+     <h:form>
+         <h3>Dodaj Admina</h3>
+         
+       <table>
             <tr>
-               <td>Nazwa:</td>
+               <td>Login:</td>
                <td><h:inputText value="#{admin.name}" id="name"/></td>
             </tr>
             <tr>
                <td>Hasło:</td>
                <td><h:inputSecret value="#{admin.password}" id="password"/></td>
             </tr>
+            <tr>
+               <td>Mail:</td>
+              <td> <h:inputText value="#{admin.mail}"/></td>
+            </tr>
+            <tr>
+               <td>Pozycja:</td>
+               <td> <h:inputText value="#{admin.position}"/></td>
+            </tr>
          </table>
-         <p><h:commandButton value="Login" action="#{admin.verifyUser}">
-            <f:ajax execute="name password" render="out"/>
-         </h:commandButton></p>
-        <h3><h:outputText id="out" value="#{admin.verify}"/></h3>
-  
+         
+         <p><h:commandButton value="Dodaj Admina" action="#{admin.create}"/></p>
+             
       </h:form>
+             <p><h:link value="powrot" outcome="adminAccount"/></p>
       
 	<br />		
 	</div>	
