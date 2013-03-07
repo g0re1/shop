@@ -1,6 +1,7 @@
 package pl.igore.shop.DAO;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -8,6 +9,7 @@ import org.hibernate.Query;
 import pl.igore.shop.POJO.User;
 
 public class UserDAO extends DAO implements Serializable{
+	public static final UserDAO instance = new UserDAO();
 	
 	public UserDAO(){}
 	
@@ -25,6 +27,21 @@ public class UserDAO extends DAO implements Serializable{
 			throw new AdException("Could not get User named = "+name,e);
 		}	
 		return user;
+	}
+	
+	public List<User> list()throws AdException{
+		List<User> list =  null;
+		try{
+			begin();
+			Query query = getSession().createQuery("from User");
+			list=query.list();
+			commit();
+		}
+		catch(HibernateException e){
+			rollback();
+			throw new AdException("Could not get User named = ",e);
+		}	
+		return list;
 	}
 	
 	public User create(String name, String pass, String mail)throws AdException{

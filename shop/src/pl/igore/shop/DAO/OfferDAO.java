@@ -10,6 +10,7 @@ import pl.igore.shop.POJO.Offer;
 import pl.igore.shop.POJO.User;
 
 public class OfferDAO  extends DAO{
+	public static final OfferDAO instance = new OfferDAO();
 	
 	public OfferDAO(){}
 	
