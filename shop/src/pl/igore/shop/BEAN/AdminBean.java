@@ -19,6 +19,7 @@ public class AdminBean extends UserBean{
 		super();
 	}
 	public String add100RandomOffers(){
+		App.add100RandomOffers();
 		return"";
 	}
 	

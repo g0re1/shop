@@ -16,6 +16,7 @@ import javax.persistence.Table;
 @Table(name="offer")
 public class Offer implements Serializable {
 	private int id;
+	private User user;
 	private String name;
 	private Category category;
 	private double price;
@@ -25,8 +26,13 @@ public class Offer implements Serializable {
 	
 	public Offer(){}
 	
-	public Offer(String name){
+	public Offer(User user,String name,Category cat, double price, String spec,Date startDate,Date endDate ){		
 		this.name=name;
+		this.category=cat;
+		this.price=price;
+		this.specification=spec;
+		this.startDate=endDate;
+		this.endDate=endDate;
 	}
 	
 	@Id
@@ -37,6 +43,15 @@ public class Offer implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+	@ManyToOne(targetEntity=User.class)
+	@Column(nullable=false)
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	@Column(name="product_name",nullable=false, unique=true)
@@ -56,7 +71,7 @@ public class Offer implements Serializable {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
+	@Column(nullable=false)
 	public double getPrice() {
 		return price;
 	}
@@ -64,7 +79,7 @@ public class Offer implements Serializable {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
+	@Column(nullable=false)
 	public String getSpecification() {
 		return specification;
 	}
@@ -72,7 +87,7 @@ public class Offer implements Serializable {
 	public void setSpecification(String specification) {
 		this.specification = specification;
 	}
-
+	@Column(nullable=false)
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -80,7 +95,7 @@ public class Offer implements Serializable {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-
+	@Column(nullable=false)
 	public Date getEndDate() {
 		return endDate;
 	}
