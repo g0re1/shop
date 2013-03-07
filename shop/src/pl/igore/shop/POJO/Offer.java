@@ -54,7 +54,7 @@ public class Offer implements Serializable {
 		this.user = user;
 	}
 	
-	@Column(name="product_name",nullable=false, unique=true)
+	@Column(name="offer_name",nullable=false)
 	public String getName() {
 		return name;
 	}

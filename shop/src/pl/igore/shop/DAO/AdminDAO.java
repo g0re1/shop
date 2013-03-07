@@ -7,6 +7,8 @@ import pl.igore.shop.POJO.Admin;
 import pl.igore.shop.POJO.User;
 
 public class AdminDAO extends DAO{
+	public static final AdminDAO instance = new AdminDAO();
+	
 	public AdminDAO(){}
 	
 	public Admin get(String name) throws AdException{

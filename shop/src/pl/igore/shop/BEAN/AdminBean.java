@@ -18,6 +18,11 @@ public class AdminBean extends UserBean{
 	public AdminBean(){
 		super();
 	}
+	public String showCat(){
+		App.showCat();
+		return "";
+	}
+	
 	public String add100RandomOffers(){
 		App.add100RandomOffers();
 		return"";
@@ -35,7 +40,7 @@ public class AdminBean extends UserBean{
 	
 	@PostConstruct
 	public void initialize(){
-		AdminDAO adminD = new AdminDAO();
+		AdminDAO adminD = AdminDAO.instance;
 		try {
 			if( !adminD.contains("admin")){
 				adminD.create("admin","a","admin@lib-gore.rhcloud.com","headAdmin");

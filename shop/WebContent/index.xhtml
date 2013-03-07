@@ -11,6 +11,7 @@ xmlns:h="http://java.sun.com/jsf/html"
       <ui:composition template="/templates/masterLayout.xhtml">
          <ui:param name="verified" value="#{user.verified}"/>
          <ui:param name="notVerified" value="#{user.notVerified}"/>
+         <ui:param name="offer" value="#{offer}"/>
          
          <ui:define name="windowTitle">
           Shop-Gore
@@ -21,6 +22,8 @@ xmlns:h="http://java.sun.com/jsf/html"
          	<h:commandLink rendered="#{user.verified}" action="#{user.logout}"  value="[ -- Wyloguj -- ]" />
          	</h:form>
          </ui:define>
+         
+
                        
          <ui:define name="content">
              <div id="tresc">								

@@ -5,6 +5,10 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
+      
+   <f:metadata>
+   	<f:viewParam name="cat" value="#{offer.categoryS}"/>
+   </f:metadata>
    
    <h:head>
       <title>
@@ -45,25 +49,21 @@
     </ul>
     </div>
   
-
-          
+      
     <ui:insert name="sidebarLeft">
             
-		<div id="sidebar">
+	 <div id="sidebar">
 		<h:outputText value="#{verified}"/>
 		<h2>Kategorie</h2>
-		<p><a href="#">fitna.pl</a></p>
-		<p><a href="#">fitna.pl</a></p>
-		<p><a href="#">fitna.pl</a></p>
-		<p><a href="#">fitna.pl</a></p>
-		<p><a href="#">fitna.pl</a></p>
-		<p><a href="#">fitna.pl</a></p>
-		<p><a href="#">fitna.pl</a></p>
-		<p><a href="#">fitna.pl</a></p>
-		<p><a href="#">fitna.pl</a></p>
-		<p><a href="#">fitna.pl</a></p>
-		<p><a href="#">fitna.pl</a></p>
-		<p><a href="#">fitna.pl</a></p>
+		<h:form>
+			<h:dataTable value="#{offer.categoryList}" var="catList">
+				<h:column>
+				<h:link value="#{catList.name}" outcome="category">
+					<f:param name="cat" value="#{catList.name}"/>
+				</h:link>
+				</h:column>
+			</h:dataTable>
+		</h:form>
 		</div>
 
     </ui:insert>

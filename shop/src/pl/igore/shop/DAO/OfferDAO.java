@@ -1,6 +1,7 @@
 package pl.igore.shop.DAO;
 
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -28,5 +29,20 @@ public class OfferDAO  extends DAO{
 			return offer;
 		}
 	
-
+	public List<Offer> list() throws AdException{
+		List<Offer> list =  null;
+		try{
+			begin();
+			Query query = getSession().createQuery("from Offer");
+			list=query.list();
+			commit();
+		}
+		catch(HibernateException e){
+			rollback();
+			throw new AdException("Could not get Offer list ",e);
+		}	
+		return list;
+	}
 }
+
+
