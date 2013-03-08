@@ -5,10 +5,6 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-      
-   <f:metadata>
-   	<f:viewParam name="cat" value="#{offer.categoryS}"/>
-   </f:metadata>
    
    <h:head>
       <title>
@@ -58,9 +54,8 @@
 		<h:form>
 			<h:dataTable value="#{offer.categoryList}" var="catList">
 				<h:column>
-				<h:link value="#{catList.name}" outcome="category">
-					<f:param name="cat" value="#{catList.name}"/>
-				</h:link>
+				<h:commandLink value="#{catList.name}" action="#{offer.showCat(catList.name)}"/>
+
 				</h:column>
 			</h:dataTable>
 		</h:form>
@@ -87,7 +82,6 @@
          </ui:insert>
       </div>
       
-
       	<ui:insert name="footer">
       	<div id="stopka">
 			<p>Copyright <a href="http://shop-gore.rhcloud.com"> shop-gore </a> Design by <b>Gore</b></p> 
@@ -97,7 +91,6 @@
 			<p><h:link outcome="admin" value="admin" /></p>
 			
       	</ui:insert>
-  
       	
       </div>
       <ui:debug/>
