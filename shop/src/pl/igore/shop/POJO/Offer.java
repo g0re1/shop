@@ -46,7 +46,6 @@ public class Offer implements Serializable {
 		this.id = id;
 	}
 	@ManyToOne(targetEntity=User.class)
-	@Column(nullable=false)
 	public User getUser() {
 		return user;
 	}
