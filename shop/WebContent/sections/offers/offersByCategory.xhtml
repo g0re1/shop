@@ -4,8 +4,6 @@
 xmlns:h="http://java.sun.com/jsf/html"
 
       xmlns:ui="http://java.sun.com/jsf/facelets">
-      
-        <head><title>IGNORED</title></head>
         
  <body>
       <ui:composition template="/templates/masterLayout.xhtml">
@@ -27,13 +25,13 @@ xmlns:h="http://java.sun.com/jsf/html"
              <div id="tresc">								
 				<div id="wpis">				
 					<br />					
-					<h2>Oferty</h2>
+					<h2>#{offer.categoryS}</h2>
 					<p>12 października 2012 11:52:25<span> Autor : <a href="#">gore</a></span></p> 		<hr />
 					<p> 
 						<h:form>
 						<h:dataTable value="#{offer.offersList}" var="offersList">
 							<h:column>
-							<h:commandLink value="#{offersList.name}" action="#{offer.getOffer(offersList.name)}" />
+							<h:commandLink value="#{offersList.name}" action="#{offer.getOffId(offersList.id)}" />
 							</h:column>
 						</h:dataTable>
 					</h:form>

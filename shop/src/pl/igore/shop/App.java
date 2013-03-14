@@ -55,10 +55,11 @@ public class App {
 		Random random = new Random();
 		for(int i=0;i<100;i++){
 			try {
-				offerD.create(userList.get(random.nextInt(userList.size()-1)),"Oferta"+x+i, 
-						catList.get(random.nextInt(catList.size()-1)),random.nextDouble()*1000,
+				offerD.create(userList.get(random.nextInt(userList.size())),"Oferta"+x+i, 
+						catList.get(random.nextInt(catList.size())),random.nextDouble()*1000,
 						"Opis Oferty"+x+i,new Date(),new Date() 
 						);
+				System.out.println(userList.get(random.nextInt(userList.size())).getName());
 			} catch (AdException e) {
 				e.printStackTrace();
 			}

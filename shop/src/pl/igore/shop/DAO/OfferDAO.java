@@ -18,22 +18,39 @@ public class OfferDAO  extends DAO{
 	
 	public OfferDAO(){}
 	
-	public Offer get(String name) throws AdException{
+	public List<Offer> getById(int id) throws AdException{
+		List<Offer> list = null;
+			try{	
+				begin();
+				Query query = getSession().createQuery("from Offer where id=:id");
+				query.setParameter("id", id);
+				list=query.list();
+				commit();
+			}
+
+		catch(HibernateException e){
+			rollback();
+			throw new AdException("Could not get Offer with id = "+id,e);
+		}
+		return list;
+	}
+	
+/*	public Offer get(String name) throws AdException{
 		Offer offer =  null;
 		try{
 			begin();
-			Query query = getSession().createQuery("from Category where name=:name");
-			query.setParameter("name", name);
-			offer = (Offer) query.uniqueResult();
+			Query query = getSession().createQuery("from Offer where offer_name=:name");
+			query.setParameter("offer_name", name);
+			offer = (Offer)query.uniqueResult();
 			commit();
 		}
 		catch(HibernateException e){
 			rollback();
-			throw new AdException("Could not get Cat named = "+name,e);
+			throw new AdException("Could not get Offer named = "+name,e);
 		}	
 		return offer;
 	}
-	
+	*/
 	public Offer create(User user,String name,Category cat, double price, String spec,Date startDate,Date endDate ) throws AdException{	
 		Offer offer =  new Offer(user,name,cat,price,spec,startDate,endDate);
 			try{
@@ -45,6 +62,9 @@ public class OfferDAO  extends DAO{
 				rollback();
 				throw new AdException("Could not create offer named = "+name,e);
 			}	
+			finally{
+				close();
+			}
 			return offer;
 		}
 	

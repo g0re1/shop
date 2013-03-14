@@ -22,8 +22,18 @@ import pl.igore.shop.POJO.Offer;
 public class OfferBean implements Serializable {
 	private String categoryS;
 	private String offerS;
+	private String offId;
+
 	
 	public OfferBean(){}
+	
+	public void setOffId(String id){
+		this.offId=id;
+	}
+	
+	public String getOffId(){
+		return offId;
+	}
 	
 	public String setCat(String catS){
 		categoryS=catS;
@@ -70,14 +80,22 @@ public class OfferBean implements Serializable {
 		return"offer";
 	}
 	
-	public Offer getOfferDetails(){
+	public String getOffId(String id){
+		this.offId=id;
+		return"offer";
+	}
+	
+	public List<Offer> getOfferDetails(){
 		OfferDAO offerD = OfferDAO.instance;
-		Offer offer = null;
+		List<Offer> offer=null;
 		try {
-			offer = offerD.get(this.offerS);
+			offer = offerD.getById(new Integer(offId));
 		} catch (AdException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
+		if (offer==null) 
+		System.out.println("nullem jest");
+
 		return offer;
 	}
 

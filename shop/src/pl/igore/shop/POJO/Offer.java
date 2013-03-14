@@ -26,7 +26,8 @@ public class Offer implements Serializable {
 	
 	public Offer(){}
 	
-	public Offer(User user,String name,Category cat, double price, String spec,Date startDate,Date endDate ){		
+	public Offer(User user,String name,Category cat, double price, String spec,Date startDate,Date endDate ){	
+		this.user=user;
 		this.name=name;
 		this.category=cat;
 		this.price=price;
@@ -44,12 +45,12 @@ public class Offer implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+	@ManyToOne(targetEntity=User.class)
+	@Column(nullable=false)
 	public User getUser() {
 		return user;
 	}
-	@ManyToOne(targetEntity=User.class)
-	@Column(nullable=false)
+
 	public void setUser(User user) {
 		this.user = user;
 	}
