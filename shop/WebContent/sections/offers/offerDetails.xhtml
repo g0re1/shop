@@ -27,16 +27,10 @@ xmlns:h="http://java.sun.com/jsf/html"
              <div id="tresc">								
 				<div id="wpis">				
 					<br />					
-					<h2>Oferty</h2>
+					<h2>Oferta</h2>
 					<p>12 października 2012 11:52:25<span> Autor : <a href="#">gore</a></span></p> 		<hr />
 					<p> 
-						<h:form>
-						<h:dataTable value="#{offer.offersList}" var="offersList">
-							<h:column>
-							<h:commandLink value="#{offersList.name}" action="#{offer.getOffer(offersList.name)}" />
-							</h:column>
-						</h:dataTable>
-					</h:form>
+					<h:outputText value="#{offer.offerS}"/>	
 					</p><hr />
 					<p><a href="/">Read more | Comments</a>(28)</p>	
 					<br />		

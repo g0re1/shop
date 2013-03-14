@@ -18,6 +18,22 @@ public class OfferDAO  extends DAO{
 	
 	public OfferDAO(){}
 	
+	public Offer get(String name) throws AdException{
+		Offer offer =  null;
+		try{
+			begin();
+			Query query = getSession().createQuery("from Category where name=:name");
+			query.setParameter("name", name);
+			offer = (Offer) query.uniqueResult();
+			commit();
+		}
+		catch(HibernateException e){
+			rollback();
+			throw new AdException("Could not get Cat named = "+name,e);
+		}	
+		return offer;
+	}
+	
 	public Offer create(User user,String name,Category cat, double price, String spec,Date startDate,Date endDate ) throws AdException{	
 		Offer offer =  new Offer(user,name,cat,price,spec,startDate,endDate);
 			try{

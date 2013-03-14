@@ -21,10 +21,11 @@ import pl.igore.shop.POJO.Offer;
 
 public class OfferBean implements Serializable {
 	private String categoryS;
+	private String offerS;
 	
 	public OfferBean(){}
 	
-	public String showCat(String catS){
+	public String setCat(String catS){
 		categoryS=catS;
 		return "category";
 	}
@@ -62,5 +63,29 @@ public class OfferBean implements Serializable {
 
 	public void setCategoryS(String categoryS) {
 		this.categoryS = categoryS;
+	}
+	
+	public String getOffer(String offerS){
+		this.offerS=offerS;
+		return"offer";
+	}
+	
+	public Offer getOfferDetails(){
+		OfferDAO offerD = OfferDAO.instance;
+		Offer offer = null;
+		try {
+			offer = offerD.get(this.offerS);
+		} catch (AdException e) {
+			e.printStackTrace();
+		}
+		return offer;
+	}
+
+	public String getOfferS() {
+		return offerS;
+	}
+
+	public void setOfferS(String offerS) {
+		this.offerS = offerS;
 	}
 }

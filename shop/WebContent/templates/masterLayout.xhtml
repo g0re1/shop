@@ -54,7 +54,7 @@
 		<h:form>
 			<h:dataTable value="#{offer.categoryList}" var="catList">
 				<h:column>
-				<h:commandLink value="#{catList.name}" action="#{offer.showCat(catList.name)}"/>
+				<h:commandLink value="#{catList.name}" action="#{offer.setCat(catList.name)}"/>
 
 				</h:column>
 			</h:dataTable>
