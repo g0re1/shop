@@ -11,7 +11,7 @@
     
          
     	<ui:define name="windowTitle">
-          Offers
+          Offer details
          </ui:define>
          
          <ui:define name="logout">
@@ -31,7 +31,7 @@
 						<h:dataTable value="#{offer.offerDetails}" var="offerDetails">
 							<h:column>
 								<h3>Tytuł : #{offerDetails.name}</h3>
-								<I>Kategoria :  #{offerDetails.category.name}</I>
+								<i>Kategoria :  #{offerDetails.category.name}</i>
 								<p>Cena : #{offerDetails.price}</p>
 								<p>Opis : #{offerDetails.specification}</p>
 								<p>Użytkownik : #{offerDetails.user.name}</p>

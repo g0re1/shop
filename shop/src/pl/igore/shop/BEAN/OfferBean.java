@@ -21,7 +21,6 @@ import pl.igore.shop.POJO.Offer;
 
 public class OfferBean implements Serializable {
 	private String categoryS;
-	private String offerS;
 	private String offId;
 
 	
@@ -75,10 +74,6 @@ public class OfferBean implements Serializable {
 		this.categoryS = categoryS;
 	}
 	
-	public String getOffer(String offerS){
-		this.offerS=offerS;
-		return"offer";
-	}
 	
 	public String getOffId(String id){
 		this.offId=id;
@@ -99,11 +94,4 @@ public class OfferBean implements Serializable {
 		return offer;
 	}
 
-	public String getOfferS() {
-		return offerS;
-	}
-
-	public void setOfferS(String offerS) {
-		this.offerS = offerS;
-	}
 }
