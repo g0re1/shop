@@ -74,7 +74,6 @@
 				</navigation-case>	
 			</navigation-rule>
 			
-		
 			<navigation-rule>
 						<navigation-case>	
 							<from-outcome>category</from-outcome>
@@ -87,6 +86,14 @@
 						<navigation-case>	
 							<from-outcome>offer</from-outcome>
 							<to-view-id>/sections/offers/offerDetails.xhtml</to-view-id>
+							<redirect/>
+						</navigation-case>	
+			</navigation-rule>
+			
+			<navigation-rule>
+						<navigation-case>	
+							<from-outcome>sell</from-outcome>
+							<to-view-id>/sections/sell/sellDetails.xhtml</to-view-id>
 							<redirect/>
 						</navigation-case>	
 			</navigation-rule>

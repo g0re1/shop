@@ -31,6 +31,10 @@ public class Offer implements Serializable {
 	
 	public Offer(){}
 	
+	public String toString(){
+		return "id ="+id+" user = "+user.getName()+" category = "+category.getName()+" price = "+price;
+	}
+	
 	public Offer(User user,String name,Category cat, double price, String spec,Date startDate,Date endDate ){	
 		this.user=user;
 		this.name=name;

@@ -14,7 +14,6 @@ import pl.igore.shop.POJO.User;
 @SessionScoped
 
 public class UserBean implements Serializable {
-  
    private String name;
    private String password;
    private String mail;
