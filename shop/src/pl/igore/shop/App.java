@@ -57,7 +57,13 @@ public class App {
 			try {
 				offerD.create(userList.get(random.nextInt(userList.size())),"Oferta"+x+i, 
 						catList.get(random.nextInt(catList.size())),random.nextDouble()*1000,
-						"Opis Oferty"+x+i,new Date(),new Date() 
+						"W tym miejscu znajdzie się opis ofert ale zwazywszy ze jest to tylko applikacja" +
+						"przykladowa nie bedziemy go zamieszczac. Istnieje tutaj ten tekst od tak dla zabawy " +
+						"aby wypelnic miejsce na stronie. Jesli nie podoba Ci sie to dolacz do projektu na githubie " +
+						"i zmien automat generujacy 100 losowych ogloszen tak jak Ci sie podoba " +
+						"Zapraszam." +
+						"oferta -  "+x+i,
+						new Date(),new Date() 
 						);
 				System.out.println(userList.get(random.nextInt(userList.size())).getName());
 			} catch (AdException e) {

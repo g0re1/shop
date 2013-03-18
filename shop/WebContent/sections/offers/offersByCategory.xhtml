@@ -31,7 +31,9 @@ xmlns:h="http://java.sun.com/jsf/html"
 						<h:form>
 						<h:dataTable value="#{offer.offersList}" var="offersList">
 							<h:column>
-							<h:commandLink value="#{offersList.name}" action="#{offer.getOffId(offersList.id)}" />
+							<h:commandLink value="#{offersList.name}" action="#{offer.getOffId(offersList.id)}" />,
+							#{offersList.priceCurrency},
+							<font color="brown">#{offersList.endDateWithFormat}</font>
 							</h:column>
 						</h:dataTable>
 					</h:form>

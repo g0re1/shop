@@ -23,23 +23,21 @@
          <ui:define name="content">
              <div id="tresc">								
 				<div id="wpis">				
-					<br />					
-					<h2>Oferta</h2>
-					<p>12 października 2012 11:52:25<span> Autor : <a href="#">gore</a></span></p> 		<hr />
-					<p> 	
+					<br />			
 					<h:form>
 						<h:dataTable value="#{offer.offerDetails}" var="offerDetails">
-							<h:column>
-								<h3>Tytuł : #{offerDetails.name}</h3>
-								<i>Kategoria :  #{offerDetails.category.name}</i>
-								<p>Cena : #{offerDetails.price}</p>
-								<p>Opis : #{offerDetails.specification}</p>
-								<p>Użytkownik : #{offerDetails.user.name}</p>
-							</h:column>
+						<h:column>		
+							<p> <i>Kategoria :  #{offerDetails.category.name}</i></p>
+							<h2>#{offerDetails.name}</h2>
+							<p>#{offerDetails.startDateWithFormat} ---- <b>Autor</b> : <a href="#">#{offerDetails.user.name}</a></p> 		<hr />
+							<p><i>Cena : #{offerDetails.priceCurrency}</i></p>
+							<p>#{offerDetails.specification}</p>
+						</h:column>
 						</h:dataTable>
 					</h:form>
-					</p><hr />
-					<p><a href="/">Read more | Comments</a>(28)</p>	
+					<hr />
+					<p><h:link outcome="category" value="powrot"/></p>
+
 					<br />		
 				</div>	
 			<br /><br />

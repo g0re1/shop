@@ -23,7 +23,6 @@ public class OfferBean implements Serializable {
 	private String categoryS;
 	private String offId;
 
-	
 	public OfferBean(){}
 	
 	public void setOffId(String id){

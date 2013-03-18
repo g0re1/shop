@@ -1,7 +1,11 @@
 package pl.igore.shop.POJO;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="offer")
@@ -76,10 +81,17 @@ public class Offer implements Serializable {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(double price) {	
 		this.price = price;
 	}
-	@Column(nullable=false)
+	@Transient
+	public String getPriceCurrency(){
+		NumberFormat n = NumberFormat.getCurrencyInstance(Locale.getDefault()); 
+		String s = n.format(price);
+		return s;
+	}
+	
+	@Column(nullable=false,columnDefinition="TEXT")
 	public String getSpecification() {
 		return specification;
 	}
@@ -95,6 +107,7 @@ public class Offer implements Serializable {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
+	
 	@Column(nullable=false)
 	public Date getEndDate() {
 		return endDate;
@@ -102,6 +115,23 @@ public class Offer implements Serializable {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+	
+	@Transient
+	public String getEndDateWithFormat(){
+		return shopDateFormat(endDate);
+	}
+	
+	@Transient
+	public String getStartDateWithFormat(){
+		return shopDateFormat(startDate);
+	}
+	
+	@Transient
+	public String shopDateFormat(Date date){
+		DateFormat format = new SimpleDateFormat("kk:mm, dd-MM-yyyy");
+		String dateS =	format.format(date);
+		return dateS;
 	}
 
 }
