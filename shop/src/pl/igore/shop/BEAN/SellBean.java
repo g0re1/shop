@@ -7,16 +7,19 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import pl.igore.shop.DAO.AdException;
 import pl.igore.shop.DAO.AdminDAO;
 import pl.igore.shop.DAO.CategoryDAO;
+import pl.igore.shop.DAO.OfferDAO;
 import pl.igore.shop.DAO.UserDAO;
 import pl.igore.shop.POJO.Category;
 import pl.igore.shop.POJO.Offer;
@@ -38,17 +41,21 @@ public class SellBean implements Serializable{
 	
 	public SellBean(){
 		setStartDate("10-10-2013");
-		
 	}
 	
-	public String createOffer(String userS){
+	public String createOffer(){
 		UserDAO userD =UserDAO.instance;
 		CategoryDAO catD = CategoryDAO.instance;
+		OfferDAO offerD = OfferDAO.instance;
+		
 		User user = null;
 		Category cat = null;
-		
+		FacesContext context = FacesContext.getCurrentInstance();
+		Map<String,String> params = context.getExternalContext().getInitParameterMap();
+	//	userS = params.get(userS);
+				
 		try {
-			user = userD.get(userS);
+			user = userD.get("gore");
 			cat = catD.get(categoryS);
 		} catch (AdException e) {
 			e.getMessage();
@@ -56,6 +63,7 @@ public class SellBean implements Serializable{
 		
 		Offer offer = new Offer();
 		offer.setUser(user);
+		offer.setName(name);
 		offer.setCategory(cat);
 		offer.setPrice(price);
 		offer.setStartDate(formatDate(startDate,startDateMin,startDateHour));
@@ -67,6 +75,12 @@ public class SellBean implements Serializable{
 		offer.setEndDate(endDate);
 		
 		offer.setSpecification(specification);
+		
+		try {
+			offerD.create(offer);
+		} catch (AdException e) {
+			e.printStackTrace();
+		}
 		
 		System.out.println(offer.toString());
 		return"";
@@ -101,7 +115,7 @@ public class SellBean implements Serializable{
 		return catNamesList;
 	}
 	
-	public List<Integer> getDays(){
+	public List<Integer> getDaysList(){
 		List<Integer>list = new ArrayList<Integer>();
 		for(int i=4;i<15;i++){
 			list.add(i);
@@ -190,6 +204,10 @@ public class SellBean implements Serializable{
 
 	public void setDays(int days) {
 		this.days = days;
+	}
+	
+	public int getDays(){
+		return days;
 	}
 	
 }

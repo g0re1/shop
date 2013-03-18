@@ -60,7 +60,7 @@
  			<tr>
  			<td>Czas trwania : </td>
  			<td>     <h:selectOneMenu value="#{sell.days}">
-              	 <f:selectItems  value="#{sell.days}"/>
+              	 <f:selectItems  value="#{sell.daysList}"/>
                </h:selectOneMenu> </td> 
  			</tr>
  
@@ -70,7 +70,10 @@
             </tr>
          </table>
          <p>
-         <h:commandButton  value="Dodaj Oferte" action="#{sell.createOffer}"/>
+         <h:commandButton  immediate="true" value="Dodaj Oferte" action="#{sell.createOffer}">
+         <f:param name="userS" value="#{user.name}"/>
+         </h:commandButton>
+         
          </p>
 
       </h:form>	

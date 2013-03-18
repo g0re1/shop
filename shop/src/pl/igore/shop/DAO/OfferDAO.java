@@ -51,6 +51,22 @@ public class OfferDAO  extends DAO{
 		return offer;
 	}
 	*/
+	public Offer create(Offer offer) throws AdException{
+		try{
+			begin();
+			getSession().save(offer);
+			commit();
+		}
+		catch(HibernateException e){
+			rollback();
+			throw new AdException("Could not create offer named = "+offer.getName(),e);
+		}	
+		finally{
+			close();
+		}
+		return offer;
+	}
+	
 	public Offer create(User user,String name,Category cat, double price, String spec,Date startDate,Date endDate ) throws AdException{	
 		Offer offer =  new Offer(user,name,cat,price,spec,startDate,endDate);
 			try{
