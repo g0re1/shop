@@ -1,6 +1,8 @@
 package pl.igore.shop.BEAN;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -33,14 +35,20 @@ public class SellBean implements Serializable{
 	private String name;
 	private String categoryS;
 	private String specification;
-	private int price;
+	private double price;
 	private String startDate;
 	private int startDateMin;
 	private int startDateHour;
 	private int days;
 	
 	public SellBean(){
-		setStartDate("10-10-2013");
+		Date date = new Date();
+		DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+		startDate=format.format(date);
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(date);
+		startDateMin = cal.get(Calendar.MINUTE);
+		startDateHour = cal.get(Calendar.HOUR_OF_DAY);
 	}
 	
 	public String createOffer(){
@@ -51,30 +59,23 @@ public class SellBean implements Serializable{
 		User user = null;
 		Category cat = null;
 		FacesContext context = FacesContext.getCurrentInstance();
-		Map<String,String> params = context.getExternalContext().getInitParameterMap();
-	//	userS = params.get(userS);
-				
+		Map<String,String> params = context.getExternalContext().getRequestParameterMap();
+		userS = params.get("userS");
+		System.out.println(userS);
 		try {
-			user = userD.get("gore");
+			user = userD.get(userS);
 			cat = catD.get(categoryS);
 		} catch (AdException e) {
 			e.getMessage();
 		}
-		
-		Offer offer = new Offer();
-		offer.setUser(user);
-		offer.setName(name);
-		offer.setCategory(cat);
-		offer.setPrice(price);
-		offer.setStartDate(formatDate(startDate,startDateMin,startDateHour));
-		
 		Date endDate = new Date();
 		GregorianCalendar cal = new GregorianCalendar();
 		cal.setTime(endDate);
 		cal.add(Calendar.DAY_OF_YEAR,days);
-		offer.setEndDate(endDate);
 		
-		offer.setSpecification(specification);
+		Offer offer = new Offer(user,name,cat,price,specification,
+				formatDate(startDate,startDateMin,startDateHour),
+				endDate);
 		
 		try {
 			offerD.create(offer);
@@ -82,8 +83,7 @@ public class SellBean implements Serializable{
 			e.printStackTrace();
 		}
 		
-		System.out.println(offer.toString());
-		return"";
+		return "offerSuccess";
 	}
 	
 	public Date formatDate(String dateS,int minute,int hour){
@@ -139,6 +139,14 @@ public class SellBean implements Serializable{
 		return list;
 	}
 	
+	public void setPrice(double price){
+		this.price=price;
+	}
+	
+	public double getPrice(){
+		return this.price;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -147,12 +155,6 @@ public class SellBean implements Serializable{
 		this.name = name;
 	}
 
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
 
 	public String getCategory() {
 		return categoryS;

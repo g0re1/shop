@@ -98,6 +98,19 @@
 						</navigation-case>	
 			</navigation-rule>
 			
+				<navigation-rule>
+						<navigation-case>	
+							<from-outcome>addOffer</from-outcome>
+							<to-view-id>/sections/sell/addOffer.xhtml</to-view-id>
+						</navigation-case>	
+			</navigation-rule>
+			
+				<navigation-rule>
+						<navigation-case>	
+							<from-outcome>offerSuccess</from-outcome>
+							<to-view-id>/sections/sell/offerSuccess.xhtml</to-view-id>
+						</navigation-case>	
+			</navigation-rule>
 			
 			
 </faces-config>

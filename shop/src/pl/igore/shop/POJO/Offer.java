@@ -32,7 +32,7 @@ public class Offer implements Serializable {
 	public Offer(){}
 	
 	public String toString(){
-		return name;
+		return "name = "+name+"user = "+user.getName()+"Category = "+category.getName()+" price = "+price;
 	}
 	
 	public Offer(User user,String name,Category cat, double price, String spec,Date startDate,Date endDate ){	
