@@ -51,6 +51,10 @@ public class SellBean implements Serializable{
 		startDateHour = cal.get(Calendar.HOUR_OF_DAY);
 	}
 	
+	public String addOffer(){
+		return"addOffer";
+	}
+	
 	public String createOffer(){
 		UserDAO userD =UserDAO.instance;
 		CategoryDAO catD = CategoryDAO.instance;
