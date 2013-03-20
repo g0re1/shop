@@ -112,5 +112,11 @@
 						</navigation-case>	
 			</navigation-rule>
 			
+			<navigation-rule>
+						<navigation-case>	
+							<from-outcome>account</from-outcome>
+							<to-view-id>/sections/account/account.xhtml</to-view-id>
+						</navigation-case>	
+			</navigation-rule>
 			
 </faces-config>

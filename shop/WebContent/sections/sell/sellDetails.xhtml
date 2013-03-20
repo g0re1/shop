@@ -23,8 +23,12 @@
                            
          <ui:define name="content">
              <div id="tresc">								
-				<div id="wpis">				
-		<h:form>
+				<div id="wpis">			
+		<h:panelGrid rendered="#{user.notVerified}">
+			<p>Musisz się <h:link value="zalogować" outcome="login" /> aby dodawać oferty.</p>
+		</h:panelGrid>	
+		
+		<h:form rendered="#{user.verified}">
          <h3>Proszę wpisać detale oferty</h3>
          <table>
             <tr>

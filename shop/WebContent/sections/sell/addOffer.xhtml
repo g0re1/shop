@@ -10,7 +10,6 @@
          <ui:param name="verified" value="#{user.verified}"/>
          <ui:param name="notVerified" value="#{user.notVerified}"/>
     
-         
     	<ui:define name="windowTitle">
           Sell details
          </ui:define>
@@ -23,9 +22,13 @@
                            
          <ui:define name="content">
              <div id="tresc">								
-				<div id="wpis">				
-		<h:form>
-         <h3>Wszystko się zgada ?</h3>
+				<div id="wpis">			
+		<h:panelGrid rendered="#{user.notVerified}">
+			<p>Musisz się <h:link value="zalogować" outcome="login" /> aby dodawać oferty.</p>
+		</h:panelGrid>	
+		
+		<h:form rendered="#{user.verified}">
+         <h3>Wszystko się zgadza ?</h3>
          <table>
             <tr>
                <td>Tytuł oferty:</td>

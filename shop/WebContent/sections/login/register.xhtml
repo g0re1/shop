@@ -7,6 +7,8 @@
      <body> 
      
        <ui:composition template="/templates/masterLayout.xhtml">
+         <ui:param name="verified" value="#{user.verified}"/>
+         <ui:param name="notVerified" value="#{user.notVerified}"/>
          <ui:define name="windowTitle">
           Shop-Gore
          </ui:define>

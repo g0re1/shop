@@ -7,6 +7,8 @@
      <body> 
      
        <ui:composition template="/templates/masterLayout.xhtml">
+                <ui:param name="verified" value="#{user.verified}"/>
+         <ui:param name="notVerified" value="#{user.notVerified}"/>
          <ui:define name="windowTitle">
           Shop-Gore
          </ui:define>
@@ -15,7 +17,7 @@
     <div id="tresc">								
 	<div id="wpis">				
 	<br />					
-	<h2>Rejestracja</h2>
+	<h2>Logowanie</h2>
 	<p>12 października 2012 11:52:25<span> Autor : <a href="#">gore</a></span></p> 		<hr />
 	
      <h:form prependId="false">
@@ -33,6 +35,7 @@
          <p><h:commandButton value="Login" action="#{user.verifyUser}">
             <f:ajax execute="name password" render="out"/>
          </h:commandButton></p>
+         <h:link value="Zarejestruj" outcome="register"/>
          <h3><h:outputText id="out" value="#{user.verify}"/></h3>
       </h:form>
       
