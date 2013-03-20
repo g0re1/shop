@@ -1,4 +1,4 @@
-shop - sem4-6
+shop - sem 4-6
 ====
 
  JSF + HIB + MySQL
