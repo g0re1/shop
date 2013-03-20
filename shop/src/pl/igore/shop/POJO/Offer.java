@@ -21,7 +21,8 @@ import javax.persistence.Transient;
 @Table(name="offer")
 public class Offer implements Serializable {
 	private int id;
-	private User user;
+	private User seller;
+	private User buyer;
 	private String name;
 	private Category category;
 	private double price;
@@ -32,11 +33,11 @@ public class Offer implements Serializable {
 	public Offer(){}
 	
 	public String toString(){
-		return "name = "+name+"user = "+user.getName()+"Category = "+category.getName()+" price = "+price;
+		return "name = "+name+"user = "+seller.getName()+"Category = "+category.getName()+" price = "+price;
 	}
 	
-	public Offer(User user,String name,Category cat, double price, String spec,Date startDate,Date endDate ){	
-		this.user=user;
+	public Offer(User seller,String name,Category cat, double price, String spec,Date startDate,Date endDate ){	
+		this.setSeller(seller);
 		this.name=name;
 		this.category=cat;
 		this.price=price;
@@ -54,15 +55,7 @@ public class Offer implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	@ManyToOne(targetEntity=User.class)
-	public User getUser() {
-		return user;
-	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
 	@Column(name="offer_name",nullable=false)
 	public String getName() {
 		return name;
@@ -136,6 +129,22 @@ public class Offer implements Serializable {
 		DateFormat format = new SimpleDateFormat("kk:mm, dd-MM-yyyy");
 		String dateS =	format.format(date);
 		return dateS;
+	}
+	@ManyToOne(targetEntity=User.class)
+	public User getSeller() {
+		return seller;
+	}
+
+	public void setSeller(User seller) {
+		this.seller = seller;
+	}
+	@ManyToOne(targetEntity=User.class)
+	public User getBuyer() {
+		return buyer;
+	}
+
+	public void setBuyer(User buyer) {
+		this.buyer = buyer;
 	}
 
 }

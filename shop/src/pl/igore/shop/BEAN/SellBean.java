@@ -42,13 +42,7 @@ public class SellBean implements Serializable{
 	private int days;
 	
 	public SellBean(){
-		Date date = new Date();
-		DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-		startDate=format.format(date);
-		GregorianCalendar cal = new GregorianCalendar();
-		cal.setTime(date);
-		startDateMin = cal.get(Calendar.MINUTE);
-		startDateHour = cal.get(Calendar.HOUR_OF_DAY);
+		reset();
 	}
 	
 	public String addOffer(){
@@ -86,8 +80,22 @@ public class SellBean implements Serializable{
 		} catch (AdException e) {
 			e.printStackTrace();
 		}
-		
+		reset();
 		return "offerSuccess";
+	}
+	
+	public  void reset(){
+		Date date = new Date();
+		DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+		startDate=format.format(date);
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(date);
+		startDateMin = cal.get(Calendar.MINUTE);
+		startDateHour = cal.get(Calendar.HOUR_OF_DAY);
+		specification="";
+		
+		name="";
+		price=0;
 	}
 	
 	public Date formatDate(String dateS,int minute,int hour){

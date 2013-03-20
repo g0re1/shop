@@ -25,9 +25,9 @@
 		<li><h:link outcome="index" value="Strona Główna"  /></li>
 		<li><h:link outcome="sell" value="Sprzedaj"  /></li>
 		<li><h:link outcome="account" value="Moje Konto"  /></li>
-        <li><h:link outcome="index" value="Pomoc"  /></li>
-		<li><h:link outcome="index" value="Kontakt"  /></li>
-		<li><h:link outcome="index" value="O Nas"  /></li>
+        <li><h:link outcome="help" value="Pomoc"  /></li>
+		<li><h:link outcome="contact" value="Kontakt"  /></li>
+		<li><h:link outcome="aboutUs" value="O Nas"  /></li>
          	<ui:insert name="login">
          	<h:inputHidden value="#{user}"/>
          	      	 	<br />
@@ -49,7 +49,9 @@
     <ui:insert name="sidebarLeft">
             
 	 <div id="sidebar">
-		<h:outputText value="#{verified}"/>
+	 <h:panelGrid rendered="#{verified}">
+		 <h:outputText value="Zalogowany jako #{user.name}"/>
+	</h:panelGrid>
 		<h2>Kategorie</h2>
 		<h:form>
 			<h:dataTable value="#{offer.categoryList}" var="catList">

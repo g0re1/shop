@@ -119,4 +119,55 @@
 						</navigation-case>	
 			</navigation-rule>
 			
+			<navigation-rule>
+						<navigation-case>	
+							<from-outcome>buying</from-outcome>
+							<to-view-id>/sections/account/buying.xhtml</to-view-id>
+						</navigation-case>	
+			</navigation-rule>
+			
+			<navigation-rule>
+						<navigation-case>	
+							<from-outcome>selling</from-outcome>
+							<to-view-id>/sections/account/selling.xhtml</to-view-id>
+						</navigation-case>	
+			</navigation-rule>
+			
+			<navigation-rule>
+						<navigation-case>	
+							<from-outcome>buyingHistory</from-outcome>
+							<to-view-id>/sections/account/buyingHistory.xhtml</to-view-id>
+						</navigation-case>	
+			</navigation-rule>
+			
+			<navigation-rule>
+						<navigation-case>	
+							<from-outcome>sellingHistory</from-outcome>
+							<to-view-id>/sections/account/sellingHistory.xhtml</to-view-id>
+						</navigation-case>	
+			</navigation-rule>
+			
+			<navigation-rule>
+						<navigation-case>	
+							<from-outcome>help</from-outcome>
+							<to-view-id>/sections/other/help.xhtml</to-view-id>
+						</navigation-case>	
+			</navigation-rule>
+			
+				
+			<navigation-rule>
+						<navigation-case>	
+							<from-outcome>contact</from-outcome>
+							<to-view-id>/sections/other/contact.xhtml</to-view-id>
+						</navigation-case>	
+			</navigation-rule>
+			
+				
+			<navigation-rule>
+						<navigation-case>	
+							<from-outcome>aboutUs</from-outcome>
+							<to-view-id>/sections/other/aboutUs.xhtml</to-view-id>
+						</navigation-case>	
+			</navigation-rule>
+			
 </faces-config>

@@ -32,22 +32,33 @@ import javax.persistence.Table;
 @DiscriminatorValue(value = "1")
 
 public class User extends Person {
-	private Set<Offer>offers;
+	private Set<Offer>sellingOffers;
+	private Set<Offer>buyingOffers;
 	
 	public User(){}
 	
 	public User(String name, String pass, String mail){
 		super(name, pass, mail);
-		offers=new HashSet<Offer>();
+		buyingOffers=new HashSet<Offer>();
+		sellingOffers = new HashSet<Offer>();
 	}
 
-	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
-	public Set<Offer> getOffers() {
-		return offers;
+	@OneToMany(mappedBy="buyer",cascade=CascadeType.ALL)
+	public Set<Offer> getBuyingOffers() {
+		return this.buyingOffers;
 	}
 
-	public void setOffers(Set<Offer> offers) {
-		this.offers = offers;
+	public void setbuyingOffers(Set<Offer> offers) {
+		this.buyingOffers = offers;
+	}
+	
+	@OneToMany(mappedBy="seller",cascade=CascadeType.ALL)
+	public Set<Offer> getSellingOffers() {
+		return sellingOffers;
+	}
+
+	public void setSellingOffers(Set<Offer> sellingOffers) {
+		this.sellingOffers = sellingOffers;
 	}
 	
 }
