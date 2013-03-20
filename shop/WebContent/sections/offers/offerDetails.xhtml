@@ -2,7 +2,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+         xmlns:f="http://java.sun.com/jsf/core">
+      <f:view>
+	      <f:metadata>
+	    	  <f:viewParam name="id" value="#{offer.offId}"/>
+	      </f:metadata>
+      </f:view>
          
  <body>
       <ui:composition template="/templates/masterLayout.xhtml">
@@ -11,7 +17,7 @@
     
          
     	<ui:define name="windowTitle">
-          Offer details
+          offer Details
          </ui:define>
          
          <ui:define name="logout">
@@ -25,6 +31,7 @@
 				<div id="wpis">				
 					<br />			
 					<h:form>
+						<h:outputText value="#{offer.offId}"/>
 						<h:dataTable value="#{offer.offerDetails}" var="offerDetails">
 						<h:column>		
 							<p> <i>Kategoria :  #{offerDetails.category.name}</i></p>

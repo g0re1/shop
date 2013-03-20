@@ -21,15 +21,17 @@ import pl.igore.shop.POJO.Offer;
 
 public class OfferBean implements Serializable {
 	private String categoryS;
-	private String offId;
+	private int offId;
+	private String offTitle;
 
-	public OfferBean(){}
+	public OfferBean(){
+	}
 	
-	public void setOffId(String id){
+	public void setOffId(int id){
 		this.offId=id;
 	}
 	
-	public String getOffId(){
+	public int getOffId(){
 		return offId;
 	}
 	
@@ -73,24 +75,28 @@ public class OfferBean implements Serializable {
 		this.categoryS = categoryS;
 	}
 	
-	
-	public String getOffId(String id){
-		this.offId=id;
-		return"offer";
-	}
-	
 	public List<Offer> getOfferDetails(){
 		OfferDAO offerD = OfferDAO.instance;
 		List<Offer> offer=null;
 		try {
-			offer = offerD.getById(new Integer(offId));
+			offer = offerD.getById(offId);
 		} catch (AdException e) {
 			e.getMessage();
+	
 		}
-		if (offer==null) 
-		System.out.println("nullem jest");
-
+		System.out.println(offer);
 		return offer;
 	}
+
+	public String getOffTitle() {
+		return offTitle;
+	}
+
+	public void setOffTitle(String offTitle) {
+		this.offTitle = offTitle;
+	}
+
+
+
 
 }

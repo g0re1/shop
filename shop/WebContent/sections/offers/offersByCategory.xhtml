@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core">
 
-      xmlns:ui="http://java.sun.com/jsf/facelets">
         
  <body>
       <ui:composition template="/templates/masterLayout.xhtml">
@@ -31,14 +32,16 @@ xmlns:h="http://java.sun.com/jsf/html"
 						<h:form>
 						<h:dataTable value="#{offer.offersList}" var="offersList">
 							<h:column>
-							<h:commandLink value="#{offersList.name}" action="#{offer.getOffId(offersList.id)}" />,
+							<h:link include-view-params="true" value="#{offersList.name}" outcome="offer">
+								<f:param name="id" value="#{offersList.id}"/>
+							</h:link>
 							#{offersList.priceCurrency},
 							<font color="brown">#{offersList.endDateWithFormat}</font>
 							</h:column>
 						</h:dataTable>
 					</h:form>
 					</p><hr />
-					<p><a href="/">Read more | Comments</a>(28)</p>	
+					<br />
 					<br />		
 				</div>	
 			<br /><br />
