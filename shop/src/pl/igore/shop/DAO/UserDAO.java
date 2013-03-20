@@ -13,6 +13,19 @@ public class UserDAO extends DAO implements Serializable{
 	
 	public UserDAO(){}
 	
+	public void update(User user) throws AdException{
+		try{
+			begin();
+			getSession().saveOrUpdate(user);
+			commit();
+		}
+		catch(HibernateException e){
+			rollback();
+			throw new AdException("Could not saveOrUpdate User named = "+user.getName(),e);
+		}	
+
+	}
+	
 	public User get(String name)throws AdException{
 		User user =  null;
 		try{

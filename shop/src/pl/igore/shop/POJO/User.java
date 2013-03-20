@@ -42,6 +42,10 @@ public class User extends Person {
 		buyingOffers=new HashSet<Offer>();
 		sellingOffers = new HashSet<Offer>();
 	}
+	
+	public void addBuyingOffer(Offer offer){
+		this.buyingOffers.add(offer);
+	}
 
 	@OneToMany(mappedBy="buyer",cascade=CascadeType.ALL)
 	public Set<Offer> getBuyingOffers() {

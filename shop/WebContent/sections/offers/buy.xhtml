@@ -3,21 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-         xmlns:f="http://java.sun.com/jsf/core">
-      <f:view>
-	      <f:metadata>
-	    	  <f:viewParam name="id" value="#{offer.offId}"/>
-	      </f:metadata>
-      </f:view>
+        xmlns:f="http://java.sun.com/jsf/core">
          
  <body>
       <ui:composition template="/templates/masterLayout.xhtml">
          <ui:param name="verified" value="#{user.verified}"/>
          <ui:param name="notVerified" value="#{user.notVerified}"/>
     
-         
     	<ui:define name="windowTitle">
-          offer Details
+          Buy offer
          </ui:define>
          
          <ui:define name="logout">
@@ -28,25 +22,24 @@
                            
          <ui:define name="content">
              <div id="tresc">								
-				<div id="wpis">				
-					<br />			
+				<div id="wpis">			
+				<br />
+				<h2>Napewno chcesz dokonać zakupu ?</h2>
 					<h:form>
 						<h:dataTable value="#{offer.offerDetails}" var="offerDetails">
 						<h:column>		
-							<p> <i>Kategoria :  #{offerDetails.category.name}</i></p>
-							<h2>#{offerDetails.name}</h2>
+							Nazwa : #{offerDetails.name}
 							<p>#{offerDetails.startDateWithFormat} ---- <b>Autor</b> : <a href="#">#{offerDetails.seller.name}</a>
-							<h:button value="Kup teraz" outcome="buy"></h:button>
+
 							</p> 		<hr />
 							<p><i>Cena : #{offerDetails.priceCurrency}</i></p>
-							<p>#{offerDetails.specification}</p>
 						</h:column>
 						</h:dataTable>
+						&lt;&lt;&lt;&lt; ===== <h:commandButton value="Kup teraz" action="#{offer.buy}"> ==== &gt;&gt;&gt;&gt;
+							<f:param name="userS" value="#{user.name}"/>
+						</h:commandButton>
 					</h:form>
-					<hr />
-					<p><h:link outcome="category" value="powrot"/></p>
-
-					<br />		
+				<br />
 				</div>	
 			<br /><br />
 				

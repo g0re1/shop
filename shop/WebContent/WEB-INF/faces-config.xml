@@ -170,4 +170,11 @@
 						</navigation-case>	
 			</navigation-rule>
 			
+			<navigation-rule>
+						<navigation-case>	
+							<from-outcome>buy</from-outcome>
+							<to-view-id>/sections/offers/buy.xhtml</to-view-id>
+						</navigation-case>	
+			</navigation-rule>
+			
 </faces-config>

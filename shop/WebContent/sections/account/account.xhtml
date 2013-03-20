@@ -29,6 +29,7 @@
 		
 		<h:form rendered="#{user.verified}">
          <h3>Twoje konto</h3>
+              <hr />
          <table>
             <tr>
                <td>Dane użytkownika : <b><font color="green"><h:outputText value="#{user.name}"/></font></b></td>
@@ -51,7 +52,10 @@
             
             
         </table>
-  
+       <hr />
+       <h:link value="powrot" outcome="index"/>
+       <br />
+       <br />
 
       </h:form>	
 				</div>	

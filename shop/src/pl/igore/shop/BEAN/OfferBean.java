@@ -3,17 +3,21 @@ package pl.igore.shop.BEAN;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import pl.igore.shop.DAO.AdException;
 import pl.igore.shop.DAO.CategoryDAO;
 import pl.igore.shop.DAO.OfferDAO;
+import pl.igore.shop.DAO.UserDAO;
 import pl.igore.shop.POJO.Category;
 import pl.igore.shop.POJO.Offer;
+import pl.igore.shop.POJO.User;
 
 @ManagedBean(name="offer") // lub @Named("user")
 @ApplicationScoped
@@ -25,6 +29,26 @@ public class OfferBean implements Serializable {
 	private String offTitle;
 
 	public OfferBean(){
+	}
+	
+	public String buy(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		Map<String,String> params = context.getExternalContext().getRequestParameterMap();
+		String userS = params.get("userS");
+		
+		UserDAO userD = UserDAO.instance;
+		OfferDAO offerD = OfferDAO.instance;
+		Offer offer = null;
+
+		try {
+			offer = offerD.getById(offId).get(0);
+			offer.setBuyer(userD.get(userS));
+			offerD.update(offer);
+			
+		} catch (AdException e) {
+			e.getMessage();
+		}
+		return"bought";
 	}
 	
 	public void setOffId(int id){

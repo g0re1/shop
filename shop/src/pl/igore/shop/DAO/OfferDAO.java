@@ -18,6 +18,19 @@ public class OfferDAO  extends DAO{
 	
 	public OfferDAO(){}
 	
+	public void update(Offer offer) throws AdException{
+		try{
+			begin();
+			getSession().saveOrUpdate(offer);
+			commit();
+		}
+		catch(HibernateException e){
+			rollback();
+			throw new AdException("Could not saveOrUpdate offer named = "+offer.getName(),e);
+		}	
+
+	}
+	
 	public List<Offer> getById(int id) throws AdException{
 		List<Offer> list = null;
 			try{	
