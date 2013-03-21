@@ -1,18 +1,26 @@
 shop - sem 4-6
 ====
 
- JSF + HIB + MySQL
+ Tomcat7 + JSF + HIB + MySQL
  
- Najpierw szablon css + html.
+ Projekt wykorzystujący funkcjonalość JSF na podstawie książki Geary, Horstmann - JavaServer Faces. 
  
- Kolejny  był system logowania .. i w dalszym planei ReCaptcha i Mailing celem aktywowania konta.
+ Projekt ma być malutką kopią funkcjonalności allegro. Podobny projekt był tematem zajęć na Politechnice Wrocławskiej 
+ na semestrach 5-6, Informatyki na IZ. 
  
- Mając szablon html+css można przejść do Facelet oraz POJO + DAO z DB odnośnie produktów.
+ Wykorzystując JSF do prezentacji danych zamiast Swinga, jak to miało miejsce w moim poprzednim projekcie chcę wykorzystując 
+ bazę danych MySQL skopiować pewne aspekty funkcjonalności allegro.
  
- Dalej prezentacja produktów w kategoriach mniej więcej tak jak na allegro.
+ Na początek podstawy czyli logowanie, rejestacja, cięcie szablonów, facelety itp.
+ Walidacja jest dla mnie nużąca dlatego zostawiam ją sobie na koniec.
  
- Dodana oferta sprzedaży produktu tworzy miniaturkę zdjęcia na stronie głównej danej kategorii + link do detali oferty.
+ Dalej możliwość dodawanie ofert w swojej sesji. 
  
- W detalach oferty mniej więcej tak jak na allegro.
+ W panelu admina zaraz po ściągnieciu projektu przez githuba można zalogować się na konto user : admin, pw:a celem dodania
+ początkowych użytkowników, kategorii oraz 100 losowych ofert. [ konto admina jest tworzone za pomocą adnotacji @PostConstruct ]
+ 
+ Dalej możliwość tak jak na allegro zakupu produktów, zapłacenia za produkt itp, obsługa w koncie użytkownika.
+ 
+ Zapraszam do współpracy. 
  
 
