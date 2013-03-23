@@ -130,6 +130,29 @@ public class OfferDAO  extends DAO{
 		}	
 		return list;
 	}
+	
+	public Offer deleteByID(int id) throws AdException{
+		Offer offer =  null;
+		
+		try{
+			begin();
+			Query query = getSession().createQuery("from Offer where id=:id");
+			query.setParameter("id", id);
+			offer = (Offer)query.uniqueResult();
+			getSession().delete(offer);
+			System.out.println(offer);
+			commit();
+		}
+		catch(HibernateException e){
+			rollback();
+			throw new AdException("Could not delete offer named = "+offer.getName(),e);
+		}	
+		finally{
+			close();
+		}
+		return offer;
+	}
+	
 }
 
 

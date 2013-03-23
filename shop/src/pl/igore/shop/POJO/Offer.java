@@ -29,6 +29,7 @@ public class Offer implements Serializable {
 	private String specification;
 	private Date startDate;
 	private Date endDate;
+	private boolean active;
 	
 	public Offer(){}
 	
@@ -44,6 +45,7 @@ public class Offer implements Serializable {
 		this.specification=spec;
 		this.startDate=endDate;
 		this.endDate=endDate;
+		this.setActive(true);
 	}
 	
 	@Id
@@ -145,6 +147,14 @@ public class Offer implements Serializable {
 
 	public void setBuyer(User buyer) {
 		this.buyer = buyer;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 }

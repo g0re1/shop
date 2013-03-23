@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 import pl.igore.shop.DAO.AdException;
 import pl.igore.shop.DAO.CategoryDAO;
 import pl.igore.shop.DAO.OfferDAO;
+import pl.igore.shop.DAO.TransactionDAO;
 import pl.igore.shop.DAO.UserDAO;
 import pl.igore.shop.POJO.Category;
 import pl.igore.shop.POJO.Offer;
@@ -38,12 +39,16 @@ public class OfferBean implements Serializable {
 		
 		UserDAO userD = UserDAO.instance;
 		OfferDAO offerD = OfferDAO.instance;
+		TransactionDAO transD = TransactionDAO.instance;
+				
 		Offer offer = null;
 
 		try {
-			offer = offerD.getById(offId).get(0);
+			offer = offerD.getById(getOffId()).get(0);
 			offer.setBuyer(userD.get(userS));
+			offer.setActive(false);
 			offerD.update(offer);
+			transD.create(offer);
 			
 		} catch (AdException e) {
 			e.getMessage();
@@ -83,10 +88,11 @@ public class OfferBean implements Serializable {
 		} catch (AdException e) {
 			e.getMessage();
 		}
-		/*	Iterator<Offer> it = list.iterator();
+			Iterator<Offer> it = list.iterator();
 		while(it.hasNext()){
-			System.out.println(it.hashCode()+ it.next().getName() );
-		}*/
+			Offer aOffer = it.next(); 
+			if(!aOffer.isActive() )list.remove(aOffer);
+		}
 		
 		return list;
 	}
