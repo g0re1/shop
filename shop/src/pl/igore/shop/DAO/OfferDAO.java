@@ -7,6 +7,7 @@ import org.apache.catalina.Session;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
 import pl.igore.shop.POJO.Category;
@@ -112,13 +113,15 @@ public class OfferDAO  extends DAO{
 		return list;
 	}
 	
-	public List<Offer> listByCategory(String catS) throws AdException{
+	public List<Offer> activeListByCategory(String catS) throws AdException{
 		List<Offer> list =  null;
 		//CategoryDAO catD = CategoryDAO.instance;
 		//Category cat = catD.get(catS);
 		try{
 			begin();
 			Criteria crit = getSession().createCriteria(Offer.class);
+			Criterion offCrit = Restrictions.eq("active", true);
+			crit.add(offCrit);
 			Criteria catCrit = crit.createCriteria("category");
 			catCrit.add(Restrictions.eq("name", catS));
 			list=crit.list();

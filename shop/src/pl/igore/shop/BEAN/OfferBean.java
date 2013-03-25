@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import pl.igore.shop.DAO.AdException;
@@ -84,14 +85,9 @@ public class OfferBean implements Serializable {
 		OfferDAO offerD = OfferDAO.instance;
 		List<Offer>list=null;
 		try {
-			list=offerD.listByCategory(categoryS);
+			list=offerD.activeListByCategory(categoryS);
 		} catch (AdException e) {
 			e.getMessage();
-		}
-			Iterator<Offer> it = list.iterator();
-		while(it.hasNext()){
-			Offer aOffer = it.next(); 
-			if(!aOffer.isActive() )list.remove(aOffer);
 		}
 		
 		return list;
