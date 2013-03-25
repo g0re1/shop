@@ -44,12 +44,20 @@ public class OfferBean implements Serializable {
 	public boolean isNotOwnOffer(){
 		String userS = null;
 		try {
-			userS = offerD.getById(offId).get(0).getName();
+			userS = offerD.getById(offId).get(0).getSeller().getName();
 		} catch (AdException e) {
 			e.getMessage();
 		}
 		
 		return !this.userS.equals(userS);
+	}
+	
+	public String preBuy(){
+		  FacesContext context= FacesContext.getCurrentInstance();
+		  Map<String,String> params = context.getExternalContext().getRequestParameterMap();
+		  this.userS = params.get("userS");
+		  System.out.println(userS);
+		return"buy";
 	}
 	
 	public String buy(){

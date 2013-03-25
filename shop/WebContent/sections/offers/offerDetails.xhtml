@@ -37,7 +37,10 @@
 							<h2>#{offerDetails.name}</h2>
 							<p>#{offerDetails.startDateWithFormat} ---- <b>Autor</b> : <a href="#">#{offerDetails.seller.name}</a>
 
-							<span><h:button  value="Kup teraz" outcome="buy"/></span>
+							<span><h:commandButton  value="Kup teraz" action="#{offer.preBuy}">
+								<f:param name="userS" value="#{user.name}"/>
+							</h:commandButton>
+							</span>
 
 							</p> 		<hr />
 							<p><i>Cena : #{offerDetails.priceCurrency}</i></p>

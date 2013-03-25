@@ -39,10 +39,10 @@
 							<p><i>Cena : #{offerDetails.priceCurrency}</i></p>
 						</h:column>
 						</h:dataTable>
-						&lt;&lt;&lt;&lt; ===== <h:commandButton rendered="#{offer.notOwnOffer}" value="Kup teraz" action="#{offer.buy}"> ==== &gt;&gt;&gt;&gt;
-							<f:param name="userS" value="#{user.name}"/>
-						</h:commandButton>
-						<h:outputText rendered="#{offer.ownOffer}" value="Nie możesz dokonać zakupu swojej oferty"/>
+						&lt;&lt;&lt;&lt; ===== <h:commandButton rendered="#{offer.notOwnOffer}" value="Kup teraz" action="#{offer.buy}"/> ==== &gt;&gt;&gt;&gt;
+						<br /><br />
+						<font color="red"><h:outputText rendered="#{offer.ownOffer}" value="Nie możesz dokonać zakupu swojej oferty"/>
+						</font>
 					</h:form>
 				<br />
 				</div>	
