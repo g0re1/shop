@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -29,17 +30,30 @@ public class OfferBean implements Serializable {
 	private String categoryS;
 	private int offId;
 	private String offTitle;
-
+	private String userS;
+	private OfferDAO offerD ;
+	
 	public OfferBean(){
+		offerD =  OfferDAO.instance;
+	}
+	
+	public boolean isOwnOffer(){
+		return !this.isNotOwnOffer();
+	}
+	
+	public boolean isNotOwnOffer(){
+		String userS = null;
+		try {
+			userS = offerD.getById(offId).get(0).getName();
+		} catch (AdException e) {
+			e.getMessage();
+		}
+		
+		return !this.userS.equals(userS);
 	}
 	
 	public String buy(){
-		FacesContext context = FacesContext.getCurrentInstance();
-		Map<String,String> params = context.getExternalContext().getRequestParameterMap();
-		String userS = params.get("userS");
-		
 		UserDAO userD = UserDAO.instance;
-		OfferDAO offerD = OfferDAO.instance;
 		TransactionDAO transD = TransactionDAO.instance;
 				
 		Offer offer = null;
@@ -102,7 +116,6 @@ public class OfferBean implements Serializable {
 	}
 	
 	public List<Offer> getOfferDetails(){
-		OfferDAO offerD = OfferDAO.instance;
 		List<Offer> offer=null;
 		try {
 			offer = offerD.getById(offId);
@@ -121,8 +134,5 @@ public class OfferBean implements Serializable {
 	public void setOffTitle(String offTitle) {
 		this.offTitle = offTitle;
 	}
-
-
-
 
 }

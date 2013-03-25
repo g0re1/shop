@@ -133,6 +133,50 @@ public class OfferDAO  extends DAO{
 		}	
 		return list;
 	}
+	/*
+	 * User must be String - buyer or seller
+	 */
+	public List<Offer> notActiveListByBuyer(String user) throws AdException{
+		List<Offer> list =  null;
+		//CategoryDAO catD = CategoryDAO.instance;
+		//Category cat = catD.get(catS);
+		try{
+			begin();
+			Criteria crit = getSession().createCriteria(Offer.class);
+			Criterion offCrit = Restrictions.eq("active", false);
+			crit.add(offCrit);
+			Criteria catCrit = crit.createCriteria("buyer");
+			catCrit.add(Restrictions.eq("name", user));
+			list=crit.list();
+			commit();
+		}
+		catch(HibernateException e){
+			rollback();
+			throw new AdException("Could not get listByBuyer  ",e);
+		}	
+		return list;
+	}
+	
+	public List<Offer> notActiveListBySeller(String user) throws AdException{
+		List<Offer> list =  null;
+		//CategoryDAO catD = CategoryDAO.instance;
+		//Category cat = catD.get(catS);
+		try{
+			begin();
+			Criteria crit = getSession().createCriteria(Offer.class);
+			Criterion offCrit = Restrictions.eq("active", true);
+			crit.add(offCrit);
+			Criteria catCrit = crit.createCriteria("seller");
+			catCrit.add(Restrictions.eq("name", user));
+			list=crit.list();
+			commit();
+		}
+		catch(HibernateException e){
+			rollback();
+			throw new AdException("Could not get listBySeller  ",e);
+		}	
+		return list;
+	}
 	
 	public Offer deleteByID(int id) throws AdException{
 		Offer offer =  null;

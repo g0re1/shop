@@ -36,7 +36,9 @@
 							<p> <i>Kategoria :  #{offerDetails.category.name}</i></p>
 							<h2>#{offerDetails.name}</h2>
 							<p>#{offerDetails.startDateWithFormat} ---- <b>Autor</b> : <a href="#">#{offerDetails.seller.name}</a>
-							<span><h:button value="Kup teraz" outcome="buy"/></span>
+
+							<span><h:button  value="Kup teraz" outcome="buy"/></span>
+
 							</p> 		<hr />
 							<p><i>Cena : #{offerDetails.priceCurrency}</i></p>
 							<p>#{offerDetails.specification}</p>
@@ -44,7 +46,6 @@
 						</h:dataTable>
 					</h:form>
 					<hr />
-					<p><h:link outcome="category" value="powrot"/></p>
 
 					<br />		
 				</div>	

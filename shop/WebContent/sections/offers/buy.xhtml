@@ -24,8 +24,12 @@
              <div id="tresc">								
 				<div id="wpis">			
 				<br />
+				<h:panelGrid rendered="#{user.notVerified}">
+					<p> Musisz się  <h:link value="zalogować" outcome="login"/>aby móc coś kupić </p>
+
+				</h:panelGrid>
+				<h:form rendered="#{user.verified}">
 				<h2>Napewno chcesz dokonać zakupu ?</h2>
-					<h:form>
 						<h:dataTable value="#{offer.offerDetails}" var="offerDetails">
 						<h:column>		
 							Nazwa : #{offerDetails.name}
@@ -35,9 +39,10 @@
 							<p><i>Cena : #{offerDetails.priceCurrency}</i></p>
 						</h:column>
 						</h:dataTable>
-						&lt;&lt;&lt;&lt; ===== <h:commandButton value="Kup teraz" action="#{offer.buy}"> ==== &gt;&gt;&gt;&gt;
+						&lt;&lt;&lt;&lt; ===== <h:commandButton rendered="#{offer.notOwnOffer}" value="Kup teraz" action="#{offer.buy}"> ==== &gt;&gt;&gt;&gt;
 							<f:param name="userS" value="#{user.name}"/>
 						</h:commandButton>
+						<h:outputText rendered="#{offer.ownOffer}" value="Nie możesz dokonać zakupu swojej oferty"/>
 					</h:form>
 				<br />
 				</div>	

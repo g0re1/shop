@@ -29,16 +29,22 @@
 		
 		<h:form rendered="#{user.verified}">
          <h3>Twoje konto</h3>
-         <table>
-            <tr>
-               <td>Finanse użytkownika : <b><font color="green"><h:outputText value="#{user.name}"/></font></b></td>
  
-            </tr>
-           
-        </table>
-  
-	  <h:link value="powrot" outcome="index"/>
+
+		<p>Sprzedaż użytkownika : <b><font color="green"><h:outputText value="#{user.name}"/></font></b></p>
+
+         <h:dataTable value="#{account.soldList}" var="offersList">
+    	    <h:column>
+        		<h:link value="#{offersList.name}" outcome="offer">
+        		<f:param name="id" value="#{offersList.id}"/>
+        		</h:link>
+      	  </h:column>
+        </h:dataTable>
+
+  <br />
+    <h:link value="powrot" outcome="account"/>
       </h:form>	
+      <br />
 				</div>	
 			<br /><br />
 				
