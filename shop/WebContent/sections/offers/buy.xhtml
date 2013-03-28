@@ -29,7 +29,7 @@
 
 				</h:panelGrid>
 				<h:form rendered="#{user.verified}">
-				<h2>Napewno chcesz dokonać zakupu ?</h2>
+				<h2>Transakcja zakupu</h2>
 						<h:dataTable value="#{offer.offerDetails}" var="offerDetails">
 						<h:column>		
 							Nazwa : #{offerDetails.name}
@@ -38,11 +38,15 @@
 							</p> 		<hr />
 							<p><i>Cena : #{offerDetails.priceCurrency}</i></p>
 						</h:column>
-						</h:dataTable>
-						&lt;&lt;&lt;&lt; ===== <h:commandButton rendered="#{offer.notOwnOffer}" value="Kup teraz" action="#{offer.buy}"/> ==== &gt;&gt;&gt;&gt;
+							</h:dataTable>
+						&lt;&lt;&lt;&lt; ===== <h:commandButton rendered="#{!offer.ownOffer and offer.active}" value="Kup teraz" action="#{offer.buy}"/> ==== &gt;&gt;&gt;&gt;
+						
 						<br /><br />
 						<font color="red"><h:outputText rendered="#{offer.ownOffer}" value="Nie możesz dokonać zakupu swojej oferty"/>
-						</font>
+											<h:outputText rendered="#{!offer.active}" value="Produkt już został kupiony"/>
+								</font>
+
+
 					</h:form>
 				<br />
 				</div>	

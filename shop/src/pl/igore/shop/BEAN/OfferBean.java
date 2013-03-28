@@ -32,6 +32,7 @@ public class OfferBean implements Serializable {
 	private String offTitle;
 	private String userS;
 	private OfferDAO offerD ;
+	private boolean active;
 	
 	public OfferBean(){
 		offerD =  OfferDAO.instance;
@@ -48,7 +49,7 @@ public class OfferBean implements Serializable {
 		} catch (AdException e) {
 			e.getMessage();
 		}
-		
+		System.out.println(userS);
 		return !this.userS.equals(userS);
 	}
 	
@@ -56,7 +57,13 @@ public class OfferBean implements Serializable {
 		  FacesContext context= FacesContext.getCurrentInstance();
 		  Map<String,String> params = context.getExternalContext().getRequestParameterMap();
 		  this.userS = params.get("userS");
-		  System.out.println(userS);
+		  
+		 try {
+			setActive(offerD.getById(getOffId()).get(0).isActive());
+		} catch (AdException e) {
+			e.getMessage();
+		}
+		  
 		return"buy";
 	}
 	
@@ -141,6 +148,14 @@ public class OfferBean implements Serializable {
 
 	public void setOffTitle(String offTitle) {
 		this.offTitle = offTitle;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 }
