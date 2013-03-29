@@ -28,28 +28,28 @@
 		</h:panelGrid>	
 		
 		<h:form rendered="#{user.verified}">
-         <h3>Twoje konto</h3>
-              <hr />
-         <table>
-            <tr>
-               <td>Dane użytkownika : <b><font color="green"><h:outputText value="#{user.name}"/></font></b></td>
-            </tr>
-            <tr>
-               <td><br/><h:link value="Kupiłeś" outcome="bought"></h:link></td>
-            </tr>
-              <tr>
-               <td><h:link value="Sprzedajesz" outcome="sold"></h:link></td>
-            </tr>           
-            <tr>
-               <td><h:link value="Zapłać" outcome="payList"></h:link></td>
-            </tr>                   
-        </table>
-       <hr />
-       <h:link value="powrot" outcome="index"/>
-       <br />
-       <br />
-
+		<br />
+         <h3>Możesz zapłacić za produkty</h3>
+              <p>Kupno użytkownika : <b><font color="green"><h:outputText value="#{user.name}"/></font></b></p> 	                     
+        <h:dataTable value="#{account.transactionList}" var="transList">
+    	    <h:column>
+    	    	<table>
+    	    	<tr>
+        			<td> 
+        			<h:link rendered="#{!transList.paid}" value="#{transList.offer.name}" outcome="pay">	
+        				<f:param name="transId" value="#{transList.id}"/> 
+        			</h:link>	
+					<h:outputText rendered="#{transList.paid}" value= "#{transList.offer.name}" />
+					</td>
+				 </tr>
+				</table>
+      	  </h:column>
+        </h:dataTable>
+        <br />
+    <h:link value="powrot" outcome="account"/>
+ 
       </h:form>	
+        <br />  <br />
 				</div>	
 			<br /><br />
 				

@@ -39,10 +39,6 @@ public class OfferBean implements Serializable {
 	}
 	
 	public boolean isOwnOffer(){
-		return !this.isNotOwnOffer();
-	}
-	
-	public boolean isNotOwnOffer(){
 		String userS = null;
 		try {
 			userS = offerD.getById(offId).get(0).getSeller().getName();
@@ -50,7 +46,7 @@ public class OfferBean implements Serializable {
 			e.getMessage();
 		}
 		System.out.println(userS);
-		return !this.userS.equals(userS);
+		return this.userS.equals(userS);
 	}
 	
 	public String preBuy(){

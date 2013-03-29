@@ -4,6 +4,12 @@
 	  xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:f="http://java.sun.com/jsf/core">
+   
+       <f:view>
+	      <f:metadata>
+	    	  <f:viewParam name="transId" value="#{account.transId}"/>
+	      </f:metadata>
+      </f:view>
          
  <body>
       <ui:composition template="/templates/masterLayout.xhtml">
@@ -28,28 +34,26 @@
 		</h:panelGrid>	
 		
 		<h:form rendered="#{user.verified}">
-         <h3>Twoje konto</h3>
-              <hr />
-         <table>
-            <tr>
-               <td>Dane użytkownika : <b><font color="green"><h:outputText value="#{user.name}"/></font></b></td>
-            </tr>
-            <tr>
-               <td><br/><h:link value="Kupiłeś" outcome="bought"></h:link></td>
-            </tr>
-              <tr>
-               <td><h:link value="Sprzedajesz" outcome="sold"></h:link></td>
-            </tr>           
-            <tr>
-               <td><h:link value="Zapłać" outcome="payList"></h:link></td>
-            </tr>                   
-        </table>
-       <hr />
-       <h:link value="powrot" outcome="index"/>
-       <br />
-       <br />
-
+         <h3>Czy na pewno chcesz dokonać transakcji ?</h3>
+              <p>Kupno użytkownika : <b><font color="green"><h:outputText value="#{user.name}"/></font></b></p> 			                     
+        <h:dataTable value="#{account.transactionById}" var="trans">
+    	    <h:column>
+    	    	<table>
+    	    	<tr>
+        			<td> 	
+        				#{trans.offer.name}					
+					
+					</td>
+				 </tr>
+				</table>
+      	  </h:column>
+        </h:dataTable>
+        	<h:commandButton value="Zapłać" action="#{account.pay}"/>
+        <br />
+    <h:link value="powrot" outcome="account"/>
+ 
       </h:form>	
+        <br />  <br />
 				</div>	
 			<br /><br />
 				

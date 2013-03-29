@@ -78,7 +78,7 @@ public class AdminBean extends UserBean{
 	   }
 	
 	public String create(){
-		AdminDAO adminD = new AdminDAO();
+		AdminDAO adminD = AdminDAO.instance;
 		try {
 			if( !adminD.contains(super.getName())){
 				adminD.create(super.getName(),super.getPassword(),super.getMail(),this.getPosition());

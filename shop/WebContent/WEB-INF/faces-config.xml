@@ -164,4 +164,18 @@
 						</navigation-case>	
 			</navigation-rule>
 			
+			<navigation-rule>
+						<navigation-case>	
+							<from-outcome>payList</from-outcome>
+							<to-view-id>/sections/account/payList.xhtml</to-view-id>
+						</navigation-case>	
+			</navigation-rule>
+			
+				<navigation-rule>
+						<navigation-case>	
+							<from-outcome>pay</from-outcome>
+							<to-view-id>/sections/account/pay.xhtml</to-view-id>
+						</navigation-case>	
+			</navigation-rule>
+			
 </faces-config>
