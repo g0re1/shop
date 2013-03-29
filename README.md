@@ -8,10 +8,10 @@ shop - sem 4-6
  Projekt ma być malutką kopią funkcjonalności allegro. Podobny projekt był tematem zajęć na Politechnice Wrocławskiej 
  na semestrach 5-6, Informatyki na IZ. 
  
- Wykorzystując JSF do prezentacji danych zamiast Swinga, jak to miało miejsce w moim poprzednim projekcie chcę wykorzystując 
- bazę danych MySQL skopiować pewne aspekty funkcjonalności allegro.
+ Wykorzystując JSF do prezentacji danych zamiast Swinga, jak to miało miejsce w moim poprzednim projekcie chcę korzystając 
+  z bazy danych MySQL skopiować pewne aspekty funkcjonalności allegro.
  
- Na początek podstawy czyli logowanie, rejestacja, cięcie szablonów, facelety itp.
+ Na początek podstawy czyli logowanie, rejestracja, cięcie szablonów, facelety itp.
  Walidacja jest dla mnie nużąca dlatego zostawiam ją sobie na koniec.
  
  Dalej możliwość dodawanie ofert w swojej sesji. 
